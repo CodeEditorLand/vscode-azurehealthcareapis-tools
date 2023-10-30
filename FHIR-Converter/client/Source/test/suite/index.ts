@@ -3,17 +3,17 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as glob from 'glob';
-import * as Mocha from 'mocha';
-import { join } from 'path';
-import './test-hooks';
+import * as glob from "glob";
+import * as Mocha from "mocha";
+import { join } from "path";
+import "./test-hooks";
 
 function setupCoverage() {
-	const NYC = require('nyc');
+	const NYC = require("nyc");
 	const nyc = new NYC({
-		cwd: join(__dirname, '..', '..', '..'),
-		exclude: ['**/test/**', '.vscode-test/**'],
-		reporter: ['text', 'html', 'text-summary'],
+		cwd: join(__dirname, "..", "..", ".."),
+		exclude: ["**/test/**", ".vscode-test/**"],
+		reporter: ["text", "html", "text-summary"],
 		all: true,
 		instrument: true,
 		hookRequire: true,
@@ -32,26 +32,28 @@ export async function run(): Promise<void> {
 
 	const mochaOpts = {
 		timeout: 10 * 1000,
-		ui: 'tdd',
-		...JSON.parse(process.env.PWA_TEST_OPTIONS || '{}'),
-	};	
+		ui: "tdd",
+		...JSON.parse(process.env.PWA_TEST_OPTIONS || "{}"),
+	};
 
-	const logTestReporter = join(__dirname, '../reporters/logTestReporter');
+	const logTestReporter = join(__dirname, "../reporters/logTestReporter");
 
-	mochaOpts.reporter = 'mocha-multi-reporters';
+	mochaOpts.reporter = "mocha-multi-reporters";
 	mochaOpts.reporterOptions = {
-	reporterEnabled: logTestReporter,
-  };
+		reporterEnabled: logTestReporter,
+	};
 
 	const runner = new Mocha(mochaOpts);
 
 	runner.options.useColors = true;
-	runner.addFile(join(__dirname, './view/extension.test'));
-	runner.addFile(join(__dirname, './converter/converter.test'));
-	runner.addFile(join(__dirname, './converter/engine/fhir-converter-engine.test'));
+	runner.addFile(join(__dirname, "./view/extension.test"));
+	runner.addFile(join(__dirname, "./converter/converter.test"));
+	runner.addFile(
+		join(__dirname, "./converter/engine/fhir-converter-engine.test")
+	);
 
 	const options = { cwd: __dirname };
-	const files = glob.sync('**/*utils.test.js', options);
+	const files = glob.sync("**/*utils.test.js", options);
 
 	for (const file of files) {
 		runner.addFile(join(__dirname, file));
@@ -59,10 +61,12 @@ export async function run(): Promise<void> {
 
 	try {
 		await new Promise((resolve, reject) =>
-			runner.run(failures =>
-			failures ? reject(new Error(`${failures} tests failed`)) : resolve(),
-			),
-	);
+			runner.run((failures) =>
+				failures
+					? reject(new Error(`${failures} tests failed`))
+					: resolve()
+			)
+		);
 	} finally {
 		if (nyc) {
 			nyc.writeCoverageFile();

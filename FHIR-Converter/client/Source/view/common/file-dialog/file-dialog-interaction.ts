@@ -3,17 +3,25 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as vscode from 'vscode';
-import * as path from 'path';
-import * as fileUtils from '../../../core/common/utils/file-utils';
-import localize from '../../../i18n/localize';
-import { showQuickPick } from '../../common/input/quick-pick';
-import { MetadataType } from '../../../core/common/enum/metadata-type';
+import * as vscode from "vscode";
+import * as path from "path";
+import * as fileUtils from "../../../core/common/utils/file-utils";
+import localize from "../../../i18n/localize";
+import { showQuickPick } from "../../common/input/quick-pick";
+import { MetadataType } from "../../../core/common/enum/metadata-type";
 
-export async function openDialogSelectFolder(label: string, defaultUri: string | undefined = undefined) {
-	const options = { canSelectMany: false, canSelectFiles: false, canSelectFolders: true, openLabel: label };
+export async function openDialogSelectFolder(
+	label: string,
+	defaultUri: string | undefined = undefined
+) {
+	const options = {
+		canSelectMany: false,
+		canSelectFiles: false,
+		canSelectFolders: true,
+		openLabel: label,
+	};
 	if (defaultUri) {
-		options['defaultUri'] = vscode.Uri.file(defaultUri);
+		options["defaultUri"] = vscode.Uri.file(defaultUri);
 	}
 	const selectedFolder = await vscode.window.showOpenDialog(options);
 	if (!selectedFolder) {
@@ -23,10 +31,14 @@ export async function openDialogSelectFolder(label: string, defaultUri: string |
 	}
 }
 
-export async function showDialogSaveWorkspace(label: string, filter: string, defaultUri: string | undefined = undefined) {
-	const options = { saveLabel: label, filters: {'workspace': [filter]} };
+export async function showDialogSaveWorkspace(
+	label: string,
+	filter: string,
+	defaultUri: string | undefined = undefined
+) {
+	const options = { saveLabel: label, filters: { "workspace": [filter] } };
 	if (defaultUri) {
-		options['defaultUri'] = vscode.Uri.file(defaultUri);
+		options["defaultUri"] = vscode.Uri.file(defaultUri);
 	}
 	const workspacePath = await vscode.window.showSaveDialog(options);
 	if (!workspacePath) {
@@ -36,26 +48,42 @@ export async function showDialogSaveWorkspace(label: string, filter: string, def
 	}
 }
 
-export async function askSaveFiles(unsavedFiles: vscode.TextDocument[], infoMessage: string, acceptButtonLabel: string, rejectButtonLabel: string) {
-	return await vscode.window.showWarningMessage(infoMessage, acceptButtonLabel, rejectButtonLabel)
-	.then(async function (select) {
-		if (select === acceptButtonLabel) {
-			await saveAllFiles(unsavedFiles);
-		}
-	});
+export async function askSaveFiles(
+	unsavedFiles: vscode.TextDocument[],
+	infoMessage: string,
+	acceptButtonLabel: string,
+	rejectButtonLabel: string
+) {
+	return await vscode.window
+		.showWarningMessage(infoMessage, acceptButtonLabel, rejectButtonLabel)
+		.then(async function (select) {
+			if (select === acceptButtonLabel) {
+				await saveAllFiles(unsavedFiles);
+			}
+		});
 }
 
-export async function askCreateMetadata(infoMessage: string, createButtonLabel: string, templateFolder: string) {
-	return await vscode.window.showErrorMessage(infoMessage, createButtonLabel)
-	.then(async function (select) {
-		if (select === createButtonLabel) {
-			const selectedTemplateType = await showQuickPick(localize('message.selectTemplateType'), Object.keys(MetadataType));
-			let metadata = { type: MetadataType[selectedTemplateType] };
-			const metadataPath = path.join(templateFolder, 'metadata.json');
-			fileUtils.writeJsonToFile(metadataPath, metadata);
-			vscode.window.showInformationMessage(localize('message.createdMetadata', templateFolder))
-		}
-	});
+export async function askCreateMetadata(
+	infoMessage: string,
+	createButtonLabel: string,
+	templateFolder: string
+) {
+	return await vscode.window
+		.showErrorMessage(infoMessage, createButtonLabel)
+		.then(async function (select) {
+			if (select === createButtonLabel) {
+				const selectedTemplateType = await showQuickPick(
+					localize("message.selectTemplateType"),
+					Object.keys(MetadataType)
+				);
+				let metadata = { type: MetadataType[selectedTemplateType] };
+				const metadataPath = path.join(templateFolder, "metadata.json");
+				fileUtils.writeJsonToFile(metadataPath, metadata);
+				vscode.window.showInformationMessage(
+					localize("message.createdMetadata", templateFolder)
+				);
+			}
+		});
 }
 
 export function getUnsavedFiles(type: string) {
@@ -69,7 +97,7 @@ export function getUnsavedFiles(type: string) {
 }
 
 export async function saveAllFiles(unsavedFiles: vscode.TextDocument[]) {
-	await Promise.all(unsavedFiles.map(doc => doc.save()));
+	await Promise.all(unsavedFiles.map((doc) => doc.save()));
 }
 
 export function isDirtyFile(filePath: string) {

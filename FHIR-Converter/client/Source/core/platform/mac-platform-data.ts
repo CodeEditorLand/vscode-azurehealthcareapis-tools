@@ -1,13 +1,13 @@
-import { IPlatformData } from './platform-data';
-import { WorkspaceFileExtension } from '../common/constants/workspace-configuration';
+import { IPlatformData } from "./platform-data";
+import { WorkspaceFileExtension } from "../common/constants/workspace-configuration";
 
 export class MacPlatformData implements IPlatformData {
 	public get orasExecCmd() {
-		return 'oras-osx';
+		return "oras-osx";
 	}
 
 	public get openFolderCmd() {
-		return 'open';
+		return "open";
 	}
 
 	public get defaultWorkspaceFile() {
