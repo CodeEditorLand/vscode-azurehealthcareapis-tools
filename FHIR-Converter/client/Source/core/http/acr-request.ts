@@ -3,8 +3,8 @@
  *  Licensed under the MIT License. See License in the project root for license information.
  */
 
-import axios from "axios";
-import { TemplateManagementError } from "../common/errors/template-management-error";
+import axios from 'axios';
+import { TemplateManagementError } from '../common/errors/template-management-error';
 
 export async function getRequest(url: string, params: object = {}) {
 	try {
@@ -22,14 +22,14 @@ export async function getToken(url: string) {
 
 export async function getAcrTags(url: string, token: string) {
 	const params = {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
+		headers : {
+			Authorization: `Bearer ${token}`
+		}
 	};
 	const response = await getRequest(url, params);
 	const tags = response.data.tags;
 	if (!tags) {
 		return [];
 	}
-	return tags.map((tag) => tag.name).reverse();
+	return tags.map(tag => tag.name).reverse();
 }
