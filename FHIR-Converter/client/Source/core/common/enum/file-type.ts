@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-export enum FileType { 
-	Template = 'template', 
-	Data = 'data' 
+export enum FileType {
+	Template = "template",
+	Data = "data",
 }

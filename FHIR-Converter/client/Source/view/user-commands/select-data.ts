@@ -3,8 +3,8 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import { FileType } from '../../core/common/enum/file-type';
-import { selectFileFromExplorer } from '../common/explorer/select-file-from-explorer';
+import { FileType } from "../../core/common/enum/file-type";
+import { selectFileFromExplorer } from "../common/explorer/select-file-from-explorer";
 
 export async function selectDataCommand(event) {
 	// Select a data file from explorer according to the FileType
