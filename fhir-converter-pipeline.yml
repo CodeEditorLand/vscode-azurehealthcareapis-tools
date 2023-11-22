@@ -1,33 +1,34 @@
 steps:
-    - task: NodeTool@0
-      inputs:
-          versionSpec: "10.x"
-      displayName: "Install Node.js"
 
-    - bash: |
-          echo ">>> Installing dependencies:"
-          npm install typescript && npm install vsce && npm run postinstall
-      displayName: Install Dependencies
-      workingDirectory: $(basicPath)
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-    - bash: |
-          echo ">>> Testing project:"
-          npm run download-templates && npm run test
-      workingDirectory: $(basicPath)
-      displayName: Run Tests
+- bash: |
+    echo ">>> Installing dependencies:"
+    npm install typescript && npm install vsce && npm run postinstall
+  displayName: Install Dependencies
+  workingDirectory: $(basicPath)
 
-    - bash: |
-          echo ">>> Packaging project:"
-          npm run package
-          PACKAGE_NAME=$(node -p "require('./package.json').name")
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          echo "##vso[task.setvariable variable=packageName]$PACKAGE_NAME"
-          echo "##vso[task.setvariable variable=packageVersion]$PACKAGE_VERSION"
-      workingDirectory: $(basicPath)
-      displayName: Package project
+- bash: |
+    echo ">>> Testing project:"
+    npm run download-templates && npm run test
+  workingDirectory: $(basicPath)
+  displayName: Run Tests
 
-    - task: PublishPipelineArtifact@1
-      inputs:
-          targetPath: $(basicPath)/$(packageName)-$(packageVersion).vsix
-          artifactName: Artifact@$(imageName)
-      displayName: Publish Pipeline Artifact
+- bash: |
+    echo ">>> Packaging project:"
+    npm run package
+    PACKAGE_NAME=$(node -p "require('./package.json').name")
+    PACKAGE_VERSION=$(node -p "require('./package.json').version")
+    echo "##vso[task.setvariable variable=packageName]$PACKAGE_NAME"
+    echo "##vso[task.setvariable variable=packageVersion]$PACKAGE_VERSION"
+  workingDirectory: $(basicPath)
+  displayName: Package project
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: $(basicPath)/$(packageName)-$(packageVersion).vsix
+    artifactName: Artifact@$(imageName)
+  displayName: Publish Pipeline Artifact
