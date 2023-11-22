@@ -3,14 +3,14 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import localize from "../../i18n/localize";
-import * as vscode from "vscode";
-import * as interaction from "../common/file-dialog/file-dialog-interaction";
-import * as fileUtils from "../../core/common/utils/file-utils";
-import * as stringUtils from "../../core/common/utils/string-utils";
-import * as configurationConstants from "../../core/common/constants/workspace-configuration";
-import * as path from "path";
-import { PlatformHandler } from "../../core/platform/platform-handler";
+import localize from '../../i18n/localize';
+import * as vscode from 'vscode';
+import * as interaction from '../common/file-dialog/file-dialog-interaction';
+import * as fileUtils from '../../core/common/utils/file-utils';
+import * as stringUtils from '../../core/common/utils/string-utils';
+import * as configurationConstants from '../../core/common/constants/workspace-configuration';
+import * as path from 'path';
+import { PlatformHandler } from '../../core/platform/platform-handler';
 
 export async function createConverterWorkspaceCommand() {
 	let templateFolder: vscode.Uri;
@@ -18,9 +18,7 @@ export async function createConverterWorkspaceCommand() {
 	let workspacePath: vscode.Uri;
 
 	// Select root template folder
-	templateFolder = await interaction.openDialogSelectFolder(
-		localize("message.selectRootTemplateFolder")
-	);
+	templateFolder = await interaction.openDialogSelectFolder(localize('message.selectRootTemplateFolder'));
 	if (!templateFolder) {
 		return undefined;
 	}
@@ -29,76 +27,57 @@ export async function createConverterWorkspaceCommand() {
 	const parentFolder = path.dirname(templateFolder.fsPath);
 
 	// Select data folder
-	dataFolder = await interaction.openDialogSelectFolder(
-		localize("message.selectDataFolder"),
-		parentFolder
-	);
+	dataFolder = await interaction.openDialogSelectFolder(localize('message.selectDataFolder'), parentFolder);
 	if (!dataFolder) {
 		return undefined;
 	}
 
-	const defaultWorkspaceUri =
-		PlatformHandler.getInstance().getDefaultWorkspaceUri(parentFolder);
-
+	const defaultWorkspaceUri = PlatformHandler.getInstance().getDefaultWorkspaceUri(parentFolder);
+	
 	// Select workspace path
 	workspacePath = await interaction.showDialogSaveWorkspace(
-		localize("message.saveWorkspaceFileAs"),
+		localize('message.saveWorkspaceFileAs'), 
 		configurationConstants.WorkspaceFileExtension,
-		defaultWorkspaceUri
-	);
+		defaultWorkspaceUri);
 	if (!workspacePath) {
 		return undefined;
 	}
 
 	// Init workspace configuration
-	const workspaceConfig = getDefaultConverterWorkspaceConfig(
-		templateFolder.fsPath,
-		dataFolder.fsPath
-	);
+	const workspaceConfig = getDefaultConverterWorkspaceConfig(templateFolder.fsPath, dataFolder.fsPath);
 
 	// Save the workpace configuration
 	fileUtils.writeJsonToFile(workspacePath.fsPath, workspaceConfig);
 
 	// Open the workspace
-	await vscode.commands.executeCommand(
-		"vscode.openFolder",
-		workspacePath,
-		false
-	);
+	await vscode.commands.executeCommand('vscode.openFolder', workspacePath, false);
 }
 
-function getDefaultConverterWorkspaceConfig(
-	templateFolder?: string,
-	dataFolder?: string
-) {
-	const folderName = stringUtils.generatePrettyFolderName(
-		templateFolder,
-		localize("common.templateFolder.suffix")
-	);
+function getDefaultConverterWorkspaceConfig(templateFolder?: string, dataFolder?: string) {
+	const folderName = stringUtils.generatePrettyFolderName(templateFolder, localize('common.templateFolder.suffix'));
 	const folders: any[] = [];
 	const settings = {
-		"workbench.editor.enablePreview": false,
-		"diffEditor.renderSideBySide": false,
+		'workbench.editor.enablePreview': false,
+		'diffEditor.renderSideBySide': false,
 	};
 	if (!templateFolder) {
-		folders.push({});
+		folders.push({
+		});
 	} else if (templateFolder) {
 		folders.push({
-			"name": folderName,
-			"path": templateFolder,
+			'name': folderName,
+			'path': templateFolder
 		});
-		settings[
-			`${configurationConstants.ConfigurationSection}.${configurationConstants.TemplateFolderKey}`
-		] = templateFolder;
+		settings[`${configurationConstants.ConfigurationSection}.${configurationConstants.TemplateFolderKey}`] = templateFolder;
 
 		if (dataFolder) {
 			folders.push({
-				"path": dataFolder,
+				'path': dataFolder
 			});
 		}
 	}
 	return {
-		"folders": folders,
-		"settings": settings,
+		'folders': folders,
+		'settings': settings
 	};
 }
