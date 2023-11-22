@@ -1,15 +1,15 @@
 {
   "name": "vscode-health-fhir-converter",
-  "publisher": "ms-azuretools",
+  "publisher": "playform",
   "displayName": "FHIR Converter",
   "description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
-  "version": "1.4.3",
+  "version": "0.0.1",
   "license": "MIT",
   "preview": true,
-  "homepage": "https://github.com/microsoft/vscode-azurehealthcareapis-tools/blob/main/FHIR-Converter/README.md",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
   "icon": "assets/icon.png",
   "galleryBanner": {
@@ -209,7 +209,8 @@
     "test": "npm run compile && node ./client/out/test/runTest.js && node ./server/out/test/runTest.js",
     "download-templates": "cd test-data && sh download-templates.sh",
     "package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
-    "lint": "tslint --fix client/src/**/*.ts  server/src/**/*.ts"
+    "lint": "tslint --fix client/src/**/*.ts  server/src/**/*.ts",
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
   },
   "devDependencies": {
     "@types/glob": "8.1.0",
@@ -227,6 +228,20 @@
     "tslint": "5.20.1",
     "typescript": "5.3.2",
     "vsce": "1.96.1",
-    "vscode-test": "1.2.0"
+    "vscode-test": "1.2.0",
+    "typescript-esbuild": "0.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "type": "module",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
   }
 }
