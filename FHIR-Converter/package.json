@@ -1,247 +1,247 @@
 {
-  "name": "vscode-health-fhir-converter",
-  "publisher": "playform",
-  "displayName": "FHIR Converter",
-  "description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
-  "version": "0.0.1",
-  "license": "MIT",
-  "preview": true,
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-  },
-  "icon": "assets/icon.png",
-  "galleryBanner": {
-    "color": "#3c3c3c",
-    "theme": "dark"
-  },
-  "enableProposedApi": true,
-  "aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-  "activationEvents": [
-    "onCommand:microsoft.health.fhir.converter.convert",
-    "onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
-    "onCommand:microsoft.health.fhir.converter.selectTemplate",
-    "onCommand:microsoft.health.fhir.converter.selectData",
-    "onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
-    "onCommand:microsoft.health.fhir.converter.pullTemplates",
-    "onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
-    "onCommand:microsoft.health.fhir.converter.pullSampleData",
-    "onCommand:microsoft.health.fhir.converter.pushTemplates",
-    "onCommand:microsoft.health.fhir.converter.loginRegistry",
-    "onCommand:microsoft.health.fhir.converter.logoutRegistry",
-    "workspaceContains:**/*.liquid"
-  ],
-  "main": "./client/out/extension.js",
-  "capabilities": {
-    "untrustedWorkspaces": {
-      "supported": true
-    },
-    "virtualWorkspaces": false
-  },
-  "contributes": {
-    "commands": [
-      {
-        "command": "microsoft.health.fhir.converter.convert",
-        "title": "FHIR Converter: Convert data"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.updateTemplateFolder",
-        "title": "FHIR Converter: Update template folder"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.selectTemplate",
-        "title": "FHIR Converter: Select as template (*.liquid)"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.selectData",
-        "title": "FHIR Converter: Select as data (*.[hl7|ccda|json|xml])"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.createConverterWorkspace",
-        "title": "FHIR Converter: Create a converter workspace"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullTemplates",
-        "title": "FHIR Converter: Pull custom templates"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullOfficialTemplates",
-        "title": "FHIR Converter: Pull sample templates"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullSampleData",
-        "title": "FHIR Converter: Pull sample data"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pushTemplates",
-        "title": "FHIR Converter: Push custom templates"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.loginRegistry",
-        "title": "FHIR Converter: Login to Azure Container Registry"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.logoutRegistry",
-        "title": "FHIR Converter: Logout from Azure Container Registry"
-      }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "microsoft.health.fhir.converter.selectTemplate",
-          "when": "false"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.selectData",
-          "when": "false"
-        }
-      ],
-      "explorer/context": [
-        {
-          "command": "microsoft.health.fhir.converter.convert",
-          "group": "1_converter"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.selectTemplate",
-          "group": "1_converter",
-          "when": "resourceExtname == .liquid"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.selectData",
-          "group": "1_converter",
-          "when": "resourceExtname == .hl7 || resourceExtname == .ccda || resourceExtname == .xml || resourceExtname == .json"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "microsoft.health.fhir.converter.convert",
-          "group": "1_converter"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.updateTemplateFolder",
-          "group": "1_converter"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.createConverterWorkspace",
-          "group": "1_converter"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.pullTemplates",
-          "group": "1_converter"
-        },
-        {
-          "command": "microsoft.health.fhir.converter.pushTemplates",
-          "group": "1_converter"
-        }
-      ]
-    },
-    "keybindings": [
-      {
-        "command": "microsoft.health.fhir.converter.updateTemplateFolder",
-        "key": "Ctrl+U"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.createConverterWorkspace",
-        "key": "Ctrl+W"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.convert",
-        "key": "Ctrl+R"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullTemplates",
-        "key": "Ctrl+L"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pushTemplates",
-        "key": "Ctrl+H"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullOfficialTemplates",
-        "key": "Ctrl+T"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.pullSampleData",
-        "key": "Ctrl+D"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.loginRegistry",
-        "key": "Ctrl+I"
-      },
-      {
-        "command": "microsoft.health.fhir.converter.logoutRegistry",
-        "key": "Ctrl+O"
-      }
-    ],
-    "configuration": {
-      "type": "object",
-      "title": "FHIR Converter",
-      "properties": {
-        "microsoft.health.fhir.converter.enableDiffView": {
-          "type": "boolean",
-          "default": "true",
-          "description": "Enable showing the differential view after converting data."
-        },
-        "microsoft.health.fhir.converter.enableUnusedSegmentsDiagnostic": {
-          "type": "boolean",
-          "default": "true",
-          "description": "Enable showing the unused segments diagnostic after converting data."
-        },
-        "microsoft.health.fhir.converter.templateFolder": {
-          "type": "string",
-          "default": "",
-          "description": "The path to the folder the templates are saved in."
-        },
-        "microsoft.health.fhir.converter.resultFolder": {
-          "type": "string",
-          "default": "",
-          "description": "The path to the folder the results are saved in."
-        }
-      }
-    }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -b",
-    "watch": "tsc -b -w",
-    "postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
-    "test": "npm run compile && node ./client/out/test/runTest.js && node ./server/out/test/runTest.js",
-    "download-templates": "cd test-data && sh download-templates.sh",
-    "package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
-    "lint": "tslint --fix client/src/**/*.ts  server/src/**/*.ts",
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-  },
-  "devDependencies": {
-    "@types/glob": "8.1.0",
-    "@types/mocha": "10.0.6",
-    "@types/node": "20.9.4",
-    "@types/vscode": "1.84.2",
-    "chai": "4.3.10",
-    "chai-as-promised": "7.1.1",
-    "chai-subset": "1.6.0",
-    "glob": "10.3.10",
-    "mocha": "10.2.0",
-    "mocha-multi-reporters": "1.5.1",
-    "nyc": "15.1.0",
-    "reflect-metadata": "0.1.13",
-    "tslint": "5.20.1",
-    "typescript": "5.3.2",
-    "vsce": "1.96.1",
-    "vscode-test": "1.2.0",
-    "typescript-esbuild": "0.3.1"
-  },
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-  },
-  "type": "module",
-  "private": "false",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  }
+	"name": "vscode-health-fhir-converter",
+	"displayName": "FHIR Converter",
+	"version": "0.0.1",
+	"private": "false",
+	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
+	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Nikola Hristov",
+		"email": "nikola@nikolahristov.tech",
+		"url": "https://nikolahristov.tech"
+	},
+	"publisher": "playform",
+	"type": "module",
+	"main": "./client/out/extension.js",
+	"scripts": {
+		"compile": "tsc -b",
+		"download-templates": "cd test-data && sh download-templates.sh",
+		"postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
+		"lint": "tslint --fix client/src/**/*.ts  server/src/**/*.ts",
+		"package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"test": "npm run compile && node ./client/out/test/runTest.js && node ./server/out/test/runTest.js",
+		"vscode:prepublish": "npm run compile",
+		"watch": "tsc -b -w"
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "microsoft.health.fhir.converter.convert",
+				"title": "FHIR Converter: Convert data"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.updateTemplateFolder",
+				"title": "FHIR Converter: Update template folder"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.selectTemplate",
+				"title": "FHIR Converter: Select as template (*.liquid)"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.selectData",
+				"title": "FHIR Converter: Select as data (*.[hl7|ccda|json|xml])"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.createConverterWorkspace",
+				"title": "FHIR Converter: Create a converter workspace"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullTemplates",
+				"title": "FHIR Converter: Pull custom templates"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullOfficialTemplates",
+				"title": "FHIR Converter: Pull sample templates"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullSampleData",
+				"title": "FHIR Converter: Pull sample data"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pushTemplates",
+				"title": "FHIR Converter: Push custom templates"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.loginRegistry",
+				"title": "FHIR Converter: Login to Azure Container Registry"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.logoutRegistry",
+				"title": "FHIR Converter: Logout from Azure Container Registry"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "FHIR Converter",
+			"properties": {
+				"microsoft.health.fhir.converter.enableDiffView": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Enable showing the differential view after converting data."
+				},
+				"microsoft.health.fhir.converter.enableUnusedSegmentsDiagnostic": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Enable showing the unused segments diagnostic after converting data."
+				},
+				"microsoft.health.fhir.converter.templateFolder": {
+					"type": "string",
+					"default": "",
+					"description": "The path to the folder the templates are saved in."
+				},
+				"microsoft.health.fhir.converter.resultFolder": {
+					"type": "string",
+					"default": "",
+					"description": "The path to the folder the results are saved in."
+				}
+			}
+		},
+		"keybindings": [
+			{
+				"command": "microsoft.health.fhir.converter.updateTemplateFolder",
+				"key": "Ctrl+U"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.createConverterWorkspace",
+				"key": "Ctrl+W"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.convert",
+				"key": "Ctrl+R"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullTemplates",
+				"key": "Ctrl+L"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pushTemplates",
+				"key": "Ctrl+H"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullOfficialTemplates",
+				"key": "Ctrl+T"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.pullSampleData",
+				"key": "Ctrl+D"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.loginRegistry",
+				"key": "Ctrl+I"
+			},
+			{
+				"command": "microsoft.health.fhir.converter.logoutRegistry",
+				"key": "Ctrl+O"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "microsoft.health.fhir.converter.selectTemplate",
+					"when": "false"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.selectData",
+					"when": "false"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "microsoft.health.fhir.converter.convert",
+					"group": "1_converter"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.selectTemplate",
+					"group": "1_converter",
+					"when": "resourceExtname == .liquid"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.selectData",
+					"group": "1_converter",
+					"when": "resourceExtname == .hl7 || resourceExtname == .ccda || resourceExtname == .xml || resourceExtname == .json"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "microsoft.health.fhir.converter.convert",
+					"group": "1_converter"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.updateTemplateFolder",
+					"group": "1_converter"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.createConverterWorkspace",
+					"group": "1_converter"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.pullTemplates",
+					"group": "1_converter"
+				},
+				{
+					"command": "microsoft.health.fhir.converter.pushTemplates",
+					"group": "1_converter"
+				}
+			]
+		}
+	},
+	"activationEvents": [
+		"onCommand:microsoft.health.fhir.converter.convert",
+		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
+		"onCommand:microsoft.health.fhir.converter.selectTemplate",
+		"onCommand:microsoft.health.fhir.converter.selectData",
+		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
+		"onCommand:microsoft.health.fhir.converter.pullTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullSampleData",
+		"onCommand:microsoft.health.fhir.converter.pushTemplates",
+		"onCommand:microsoft.health.fhir.converter.loginRegistry",
+		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
+		"workspaceContains:**/*.liquid"
+	],
+	"devDependencies": {
+		"@types/glob": "8.1.0",
+		"@types/mocha": "10.0.6",
+		"@types/node": "20.9.4",
+		"@types/vscode": "1.84.2",
+		"chai": "4.3.10",
+		"chai-as-promised": "7.1.1",
+		"chai-subset": "1.6.0",
+		"glob": "10.3.10",
+		"mocha": "10.2.0",
+		"mocha-multi-reporters": "1.5.1",
+		"nyc": "15.1.0",
+		"reflect-metadata": "0.1.13",
+		"tslint": "5.20.1",
+		"typescript": "5.3.2",
+		"typescript-esbuild": "0.3.1",
+		"vsce": "1.96.1",
+		"vscode-test": "1.2.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"icon": "assets/icon.png",
+	"galleryBanner": {
+		"color": "#3c3c3c",
+		"theme": "dark"
+	},
+	"preview": true,
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": false
+	},
+	"enableProposedApi": true
 }
