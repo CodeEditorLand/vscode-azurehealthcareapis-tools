@@ -1,39 +1,39 @@
 {
-  "name": "vscode-health-fhir-converter-client",
-  "version": "0.0.1",
-  "private": "false",
-  "description": "Language client for FHIR Converter",
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  },
-  "publisher": "playform",
-  "type": "module",
-  "scripts": {
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-  },
-  "dependencies": {
-    "@types/glob": "8.1.0",
-    "axios": "1.6.2",
-    "glob": "10.3.10",
-    "vscode-extension-telemetry": "0.1.6",
-    "vscode-languageclient": "9.0.1"
-  },
-  "devDependencies": {
-    "typescript-esbuild": "0.3.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "preview": true
+	"name": "vscode-health-fhir-converter-client",
+	"version": "0.0.1",
+	"private": "false",
+	"description": "Language client for FHIR Converter",
+	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Nikola Hristov",
+		"email": "nikola@nikolahristov.tech",
+		"url": "https://nikolahristov.tech"
+	},
+	"publisher": "playform",
+	"type": "module",
+	"scripts": {
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+	},
+	"dependencies": {
+		"@types/glob": "8.1.0",
+		"axios": "1.6.2",
+		"glob": "10.3.10",
+		"vscode-extension-telemetry": "0.1.6",
+		"vscode-languageclient": "9.0.1"
+	},
+	"devDependencies": {
+		"typescript-esbuild": "0.3.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"preview": true
 }
