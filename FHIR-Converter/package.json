@@ -219,7 +219,7 @@
     "mocha": "10.2.0",
     "mocha-multi-reporters": "1.5.1",
     "nyc": "15.1.0",
-    "reflect-metadata": "0.1.14",
+    "reflect-metadata": "0.2.0",
     "typescript": "5.3.3",
     "typescript-esbuild": "0.3.3",
     "vsce": "1.96.1",
