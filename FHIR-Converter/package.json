@@ -2,7 +2,7 @@
   "name": "vscode-health-fhir-converter",
   "displayName": "FHIR Converter",
   "version": "0.0.1",
-  "private": "false",
+  "private": false,
   "description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
   "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "bugs": {

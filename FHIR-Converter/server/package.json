@@ -1,7 +1,7 @@
 {
   "name": "vscode-health-fhir-converter-server",
   "version": "0.0.1",
-  "private": "false",
+  "private": false,
   "description": "Language server for FHIR Converter",
   "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "bugs": {
