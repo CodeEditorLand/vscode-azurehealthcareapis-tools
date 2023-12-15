@@ -25,17 +25,17 @@ export async function handle(error: Error): Promise<void> {
 	// Handle the error using text pattern due to the lack of error code from engine tool
 	if (
 		error.message.includes(
-			"Could not find metadata.json in template directory"
+			"Could not find metadata.json in template directory",
 		)
 	) {
 		const templateFolder: string =
 			globals.settingManager.getWorkspaceConfiguration(
-				configurationConstants.TemplateFolderKey
+				configurationConstants.TemplateFolderKey,
 			);
 		await interaction.askCreateMetadata(
 			localize(errorType, localize("message.noMetadata", templateFolder)),
 			localize("message.createMetadata"),
-			templateFolder
+			templateFolder,
 		);
 	} else {
 		vscode.window.showErrorMessage(localize(errorType, error.message));

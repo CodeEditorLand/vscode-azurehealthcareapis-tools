@@ -13,7 +13,7 @@ export async function logoutRegistryCommand() {
 	// Get the registry reference
 	const registryName = await showInputBox(
 		localize("message.inputYourRegistry"),
-		workspaceStateConstants.RegistryKey
+		workspaceStateConstants.RegistryKey,
 	);
 	if (!registryName) {
 		return undefined;

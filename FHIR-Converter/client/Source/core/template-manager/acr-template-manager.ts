@@ -18,7 +18,7 @@ export class AcrTemplateManager implements ITemplateManager {
 	constructor(
 		engineExecCmd = engineConstants.DefaultEngineExecCmd,
 		orasExecCmd = PlatformHandler.getInstance().getPlatformData()
-			.orasExecCmd
+			.orasExecCmd,
 	) {
 		this._engineExecCmd = engineExecCmd;
 		this._orasExecCmd = orasExecCmd;
@@ -28,7 +28,7 @@ export class AcrTemplateManager implements ITemplateManager {
 		// Return cmd string to use terminal
 		const orasExecCmd = path.join(
 			engineConstants.DefaultEngineFolder,
-			this._orasExecCmd
+			this._orasExecCmd,
 		);
 		return `${orasExecCmd} login ${registryName}`;
 	}
@@ -37,7 +37,7 @@ export class AcrTemplateManager implements ITemplateManager {
 		try {
 			const orasExecCmd = path.join(
 				engineConstants.DefaultEngineFolder,
-				this._orasExecCmd
+				this._orasExecCmd,
 			);
 			const paramList = [" logout", registryName];
 			const cmd = orasExecCmd + paramList.join(" ");
@@ -57,7 +57,7 @@ export class AcrTemplateManager implements ITemplateManager {
 	pullTemplates(
 		imageReference: string,
 		outputFolder: string,
-		force: boolean
+		force: boolean,
 	) {
 		try {
 			const paramList = [

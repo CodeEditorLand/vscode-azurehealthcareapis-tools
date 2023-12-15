@@ -33,8 +33,8 @@ export class SettingManager {
 
 	initWorkspaceConfiguration(workspacePath: string) {
 		const workspaceConfig = {
-			"folders": [],
-			"settings": {},
+			folders: [],
+			settings: {},
 		};
 		fileUtils.writeJsonToFile(workspacePath, workspaceConfig);
 		return workspaceConfig;

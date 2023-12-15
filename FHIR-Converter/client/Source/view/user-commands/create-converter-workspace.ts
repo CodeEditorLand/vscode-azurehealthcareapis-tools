@@ -19,7 +19,7 @@ export async function createConverterWorkspaceCommand() {
 
 	// Select root template folder
 	templateFolder = await interaction.openDialogSelectFolder(
-		localize("message.selectRootTemplateFolder")
+		localize("message.selectRootTemplateFolder"),
 	);
 	if (!templateFolder) {
 		return undefined;
@@ -31,7 +31,7 @@ export async function createConverterWorkspaceCommand() {
 	// Select data folder
 	dataFolder = await interaction.openDialogSelectFolder(
 		localize("message.selectDataFolder"),
-		parentFolder
+		parentFolder,
 	);
 	if (!dataFolder) {
 		return undefined;
@@ -44,7 +44,7 @@ export async function createConverterWorkspaceCommand() {
 	workspacePath = await interaction.showDialogSaveWorkspace(
 		localize("message.saveWorkspaceFileAs"),
 		configurationConstants.WorkspaceFileExtension,
-		defaultWorkspaceUri
+		defaultWorkspaceUri,
 	);
 	if (!workspacePath) {
 		return undefined;
@@ -53,7 +53,7 @@ export async function createConverterWorkspaceCommand() {
 	// Init workspace configuration
 	const workspaceConfig = getDefaultConverterWorkspaceConfig(
 		templateFolder.fsPath,
-		dataFolder.fsPath
+		dataFolder.fsPath,
 	);
 
 	// Save the workpace configuration
@@ -63,17 +63,17 @@ export async function createConverterWorkspaceCommand() {
 	await vscode.commands.executeCommand(
 		"vscode.openFolder",
 		workspacePath,
-		false
+		false,
 	);
 }
 
 function getDefaultConverterWorkspaceConfig(
 	templateFolder?: string,
-	dataFolder?: string
+	dataFolder?: string,
 ) {
 	const folderName = stringUtils.generatePrettyFolderName(
 		templateFolder,
-		localize("common.templateFolder.suffix")
+		localize("common.templateFolder.suffix"),
 	);
 	const folders: any[] = [];
 	const settings = {
@@ -84,8 +84,8 @@ function getDefaultConverterWorkspaceConfig(
 		folders.push({});
 	} else if (templateFolder) {
 		folders.push({
-			"name": folderName,
-			"path": templateFolder,
+			name: folderName,
+			path: templateFolder,
 		});
 		settings[
 			`${configurationConstants.ConfigurationSection}.${configurationConstants.TemplateFolderKey}`
@@ -93,12 +93,12 @@ function getDefaultConverterWorkspaceConfig(
 
 		if (dataFolder) {
 			folders.push({
-				"path": dataFolder,
+				path: dataFolder,
 			});
 		}
 	}
 	return {
-		"folders": folders,
-		"settings": settings,
+		folders: folders,
+		settings: settings,
 	};
 }

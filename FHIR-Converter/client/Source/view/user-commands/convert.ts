@@ -31,13 +31,13 @@ export async function convertCommand() {
 				unsavedTemplates,
 				localize("message.saveTemplatesBeforeRefresh"),
 				localize("message.save"),
-				localize("message.ignore")
+				localize("message.ignore"),
 			);
 		}
 
 		// Get the data file
 		const dataFile = globals.settingManager.getWorkspaceState(
-			stateConstants.DataKey
+			stateConstants.DataKey,
 		);
 
 		// Check whether data file is dirty and not saved and ask if users want to save it
@@ -47,7 +47,7 @@ export async function convertCommand() {
 				[doc],
 				localize("message.saveDataBeforeRefresh"),
 				localize("message.save"),
-				localize("message.ignore")
+				localize("message.ignore"),
 			);
 		}
 
@@ -61,13 +61,13 @@ export async function convertCommand() {
 		// Add trace info to the template
 		const enableUnusedSegmentsDiagnostic =
 			globals.settingManager.getWorkspaceConfiguration(
-				configurationConstants.enableUnusedSegmentsDiagnosticKey
+				configurationConstants.enableUnusedSegmentsDiagnosticKey,
 			);
 		if (enableUnusedSegmentsDiagnostic) {
 			const traceInfo = result.traceInfo;
 			unusedSegmentsDiagnostic.updateDiagnostics(
 				vscode.Uri.file(dataFile),
-				traceInfo["UnusedSegments"]
+				traceInfo["UnusedSegments"],
 			);
 		} else {
 			unusedSegmentsDiagnostic.clearDiagnostics();
@@ -80,7 +80,7 @@ export async function convertCommand() {
 
 		// Open the template in the editor
 		const templateFile = globals.settingManager.getWorkspaceState(
-			stateConstants.TemplateKey
+			stateConstants.TemplateKey,
 		);
 		await vscode.window.showTextDocument(vscode.Uri.file(templateFile), {
 			viewColumn: vscode.ViewColumn.Two,
@@ -88,7 +88,7 @@ export async function convertCommand() {
 
 		// Obtain the enableDiffView option from the settings.
 		const enableDiff = globals.settingManager.getWorkspaceConfiguration(
-			configurationConstants.enableDiffViewKey
+			configurationConstants.enableDiffViewKey,
 		);
 		if (!enableDiff) {
 			await showResultEditor(vscode.Uri.file(result.resultFile));
@@ -102,12 +102,12 @@ export async function convertCommand() {
 				// Show result with the differential view
 				await showDifferentialView(
 					vscode.Uri.file(history[1]),
-					vscode.Uri.file(history[0])
+					vscode.Uri.file(history[0]),
 				);
 			}
 		}
 		await vscode.commands.executeCommand(
-			"workbench.action.closeOtherEditors"
+			"workbench.action.closeOtherEditors",
 		);
 	} finally {
 		// hide the conversion bar

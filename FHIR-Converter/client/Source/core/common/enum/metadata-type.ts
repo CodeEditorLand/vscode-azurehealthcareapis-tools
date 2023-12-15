@@ -5,6 +5,6 @@
 
 export enum MetadataType {
 	"C-CDA" = "ccda",
-	"HL7v2" = "hl7v2",
-	"JSON" = "json",
+	HL7v2 = "hl7v2",
+	JSON = "json",
 }

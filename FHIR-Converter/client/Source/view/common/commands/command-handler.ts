@@ -30,11 +30,11 @@ export async function commandHandler(event) {
 		if (
 			commandsNeedWorkspace.includes(this.name) &&
 			!converterWorkspaceExists(
-				configurationConstants.WorkspaceFileExtension
+				configurationConstants.WorkspaceFileExtension,
 			)
 		) {
 			throw new ConfigurationError(
-				localize("message.needCreateWorkspace")
+				localize("message.needCreateWorkspace"),
 			);
 		}
 
@@ -47,7 +47,7 @@ export async function commandHandler(event) {
 		reporter.sendTelemetryEvent(
 			"command",
 			{ command: this.name },
-			{ costTime: costTime }
+			{ costTime: costTime },
 		);
 	} catch (error) {
 		// Handle the error

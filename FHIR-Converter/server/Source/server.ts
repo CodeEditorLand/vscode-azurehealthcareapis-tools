@@ -41,7 +41,7 @@ connection.onInitialize((params: InitializeParams) => {
 	settingsManager = new SettingsManager(
 		connection,
 		capabilities,
-		validateTextDocument
+		validateTextDocument,
 	);
 
 	const hasWorkspaceFolderCapability = !!(
@@ -96,10 +96,10 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 				message: localize(
 					"message.invalidTemplate",
 					partialTemplate,
-					templateFolder.replace(/\\/g, "/")
+					templateFolder.replace(/\\/g, "/"),
 				),
 				source: localize(
-					"microsoft.health.fhir.converter.configuration.title"
+					"microsoft.health.fhir.converter.configuration.title",
 				),
 			};
 
@@ -114,10 +114,10 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
 	async (
-		_textDocumentPosition: TextDocumentPositionParams
+		_textDocumentPosition: TextDocumentPositionParams,
 	): Promise<CompletionItem[]> => {
 		const templates = utils.getAllTemplatePaths(
-			await getTemplateFolder(_textDocumentPosition.textDocument.uri)
+			await getTemplateFolder(_textDocumentPosition.textDocument.uri),
 		);
 		const allPartialTemplates = [];
 		let index = 0;
@@ -139,7 +139,7 @@ connection.onCompletion(
 			index++;
 		}
 		return allPartialTemplates;
-	}
+	},
 );
 
 // This handler resolves additional information for the item selected in the completion list.
@@ -159,7 +159,7 @@ connection.onDefinition(
 		if ((match = pattern.exec(contextString)) !== null) {
 			const relativeFilePath = utils.addUnderlineExt(match[1]);
 			const templateFolder = await getTemplateFolder(
-				params.textDocument.uri
+				params.textDocument.uri,
 			);
 			if (
 				utils
@@ -168,7 +168,7 @@ connection.onDefinition(
 			) {
 				const fileUri = utils.getFileUri(
 					templateFolder,
-					relativeFilePath
+					relativeFilePath,
 				);
 				const firstChar = {
 					start: {
@@ -190,7 +190,7 @@ connection.onDefinition(
 			}
 		}
 		return [];
-	}
+	},
 );
 
 function getSuroundingText(location: TextDocumentPositionParams): string {
@@ -226,7 +226,7 @@ function getSuroundingText(location: TextDocumentPositionParams): string {
 
 export async function getTemplateFolder(uri: string): Promise<string> {
 	const templateFolder = path.normalize(
-		(await settingsManager.getDocumentSettings(uri)).templateFolder
+		(await settingsManager.getDocumentSettings(uri)).templateFolder,
 	);
 	return templateFolder;
 }
