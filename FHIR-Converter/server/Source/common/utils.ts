@@ -10,7 +10,7 @@ import * as constants from "../common/constants";
 export function addUnderlineExt(filePath: string) {
 	const dirname = path.dirname(filePath);
 	const filenameWithExt = path.join(
-		path.basename(filePath) + constants.EngineTemplateFileExt,
+		path.basename(filePath) + constants.EngineTemplateFileExt
 	);
 	if (dirname === ".") {
 		filePath = filenameWithExt;
@@ -23,7 +23,7 @@ export function addUnderlineExt(filePath: string) {
 
 export function getSnippetTemplateName(
 	dirname: string,
-	basename: string,
+	basename: string
 ): string {
 	if (dirname !== "." && basename[0] === "_") {
 		basename = basename.substring(1, basename.length);

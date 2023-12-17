@@ -13,7 +13,7 @@ export async function pullSampleDataCommand() {
 	// Get the template type
 	const selectedType = await showQuickPick(
 		localize("message.selectSampleDataType"),
-		Object.values(TemplateType),
+		Object.values(TemplateType)
 	);
 	let imageReference;
 	imageReference = constants.SampleDataImageReferences[selectedType];

@@ -17,7 +17,7 @@ export class Reporter extends vscode.Disposable {
 			new TelemetryReporter(
 				packageInfo.name,
 				packageInfo.version,
-				packageInfo.aiKey,
+				packageInfo.aiKey
 			);
 	}
 }

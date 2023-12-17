@@ -12,7 +12,7 @@ import { MetadataType } from "../../../core/common/enum/metadata-type";
 
 export async function openDialogSelectFolder(
 	label: string,
-	defaultUri: string | undefined = undefined,
+	defaultUri: string | undefined = undefined
 ) {
 	const options = {
 		canSelectMany: false,
@@ -34,7 +34,7 @@ export async function openDialogSelectFolder(
 export async function showDialogSaveWorkspace(
 	label: string,
 	filter: string,
-	defaultUri: string | undefined = undefined,
+	defaultUri: string | undefined = undefined
 ) {
 	const options = { saveLabel: label, filters: { workspace: [filter] } };
 	if (defaultUri) {
@@ -52,7 +52,7 @@ export async function askSaveFiles(
 	unsavedFiles: vscode.TextDocument[],
 	infoMessage: string,
 	acceptButtonLabel: string,
-	rejectButtonLabel: string,
+	rejectButtonLabel: string
 ) {
 	return await vscode.window
 		.showWarningMessage(infoMessage, acceptButtonLabel, rejectButtonLabel)
@@ -66,7 +66,7 @@ export async function askSaveFiles(
 export async function askCreateMetadata(
 	infoMessage: string,
 	createButtonLabel: string,
-	templateFolder: string,
+	templateFolder: string
 ) {
 	return await vscode.window
 		.showErrorMessage(infoMessage, createButtonLabel)
@@ -74,13 +74,13 @@ export async function askCreateMetadata(
 			if (select === createButtonLabel) {
 				const selectedTemplateType = await showQuickPick(
 					localize("message.selectTemplateType"),
-					Object.keys(MetadataType),
+					Object.keys(MetadataType)
 				);
 				let metadata = { type: MetadataType[selectedTemplateType] };
 				const metadataPath = path.join(templateFolder, "metadata.json");
 				fileUtils.writeJsonToFile(metadataPath, metadata);
 				vscode.window.showInformationMessage(
-					localize("message.createdMetadata", templateFolder),
+					localize("message.createdMetadata", templateFolder)
 				);
 			}
 		});

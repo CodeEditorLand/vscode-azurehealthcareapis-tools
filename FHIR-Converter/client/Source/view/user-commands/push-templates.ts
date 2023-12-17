@@ -17,7 +17,7 @@ export async function pushTemplatesCommand() {
 	// Add push bar
 	const pushBar: vscode.StatusBarItem = vscode.window.createStatusBarItem(
 		vscode.StatusBarAlignment.Left,
-		0,
+		0
 	);
 	pushBar.text = "$(sync~spin) Pushing templates...";
 	pushBar.show();
@@ -26,7 +26,7 @@ export async function pushTemplatesCommand() {
 		// Get the image reference
 		const imageReference = await showInputBox(
 			localize("message.inputPushImageReference"),
-			workspaceStateConstants.ImageReferenceKey,
+			workspaceStateConstants.ImageReferenceKey
 		);
 		if (!imageReference) {
 			return undefined;
@@ -34,13 +34,13 @@ export async function pushTemplatesCommand() {
 
 		// Get the template folder
 		const templateFolder = globals.settingManager.getWorkspaceConfiguration(
-			workspaceConfigurationConstants.TemplateFolderKey,
+			workspaceConfigurationConstants.TemplateFolderKey
 		);
 
 		// Confirm the template folder
 		const selectedTemplateFolder = await interaction.openDialogSelectFolder(
 			localize("message.selectRootTemplateFolder"),
-			templateFolder,
+			templateFolder
 		);
 		if (!selectedTemplateFolder) {
 			return undefined;
@@ -53,7 +53,7 @@ export async function pushTemplatesCommand() {
 		// Execute the push process
 		const output = templateManager.pushTemplates(
 			imageReference,
-			selectedTemplateFolder.fsPath,
+			selectedTemplateFolder.fsPath
 		);
 
 		// Show ouput message
@@ -68,7 +68,7 @@ export async function pushTemplatesCommand() {
 					const digest = strUtils.getDigest(output);
 					if (!digest) {
 						vscode.window.showWarningMessage(
-							localize("message.digestNotFound"),
+							localize("message.digestNotFound")
 						);
 						vscode.env.clipboard.writeText(refinedOutput);
 					} else {

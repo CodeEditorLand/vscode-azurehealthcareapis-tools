@@ -16,7 +16,7 @@ export async function pullImage(imageReference, text) {
 	// Add pull bar
 	const pullBar: vscode.StatusBarItem = vscode.window.createStatusBarItem(
 		vscode.StatusBarAlignment.Left,
-		0,
+		0
 	);
 	pullBar.text = `$(sync~spin) ${text}...`;
 	pullBar.show();
@@ -26,14 +26,14 @@ export async function pullImage(imageReference, text) {
 		let workspaceFolder = undefined;
 		if (vscode.workspace.workspaceFile) {
 			workspaceFolder = path.dirname(
-				vscode.workspace.workspaceFile.fsPath,
+				vscode.workspace.workspaceFile.fsPath
 			);
 		}
 
 		// Select the output folder
 		const outputFolder = await interaction.openDialogSelectFolder(
 			localize("message.selectOutputFolder"),
-			workspaceFolder,
+			workspaceFolder
 		);
 		if (!outputFolder) {
 			return undefined;
@@ -45,7 +45,7 @@ export async function pullImage(imageReference, text) {
 			const select = await vscode.window.showWarningMessage(
 				localize("message.nonEmptyFolderForcePushOrNot"),
 				localize("message.force"),
-				localize("message.cancel"),
+				localize("message.cancel")
 			);
 			if (select === localize("message.force")) {
 				force = true;
@@ -62,7 +62,7 @@ export async function pullImage(imageReference, text) {
 		const output = templateManager.pullTemplates(
 			imageReference,
 			outputFolder.fsPath,
-			force,
+			force
 		);
 
 		// Show ouput message

@@ -40,7 +40,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Init setting manager
 	globals.settingManager = new SettingManager(
 		context,
-		configurationConstants.ConfigurationSection,
+		configurationConstants.ConfigurationSection
 	);
 
 	// Init workspace
@@ -53,17 +53,17 @@ export async function activate(context: vscode.ExtensionContext) {
 		// Init default result folder
 		let resultFolder: string =
 			globals.settingManager.getWorkspaceConfiguration(
-				configurationConstants.ResultFolderKey,
+				configurationConstants.ResultFolderKey
 			);
 		if (!resultFolder) {
 			resultFolder = path.join(
 				globals.settingManager.context.storagePath,
-				configurationConstants.DefaultResultFolderName,
+				configurationConstants.DefaultResultFolderName
 			);
 			checkCreateFolders(resultFolder);
 			await globals.settingManager.updateWorkspaceConfiguration(
 				configurationConstants.ResultFolderKey,
-				resultFolder,
+				resultFolder
 			);
 		}
 
@@ -82,67 +82,67 @@ export async function activate(context: vscode.ExtensionContext) {
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.createConverterWorkspace",
-		createConverterWorkspaceCommand,
+		createConverterWorkspaceCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.convert",
-		convertCommand,
+		convertCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.selectData",
-		selectDataCommand,
+		selectDataCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.selectTemplate",
-		selectTemplateCommand,
+		selectTemplateCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.updateTemplateFolder",
-		updateTemplateFolderCommand,
+		updateTemplateFolderCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.pullOfficialTemplates",
-		pullOfficialTemplatesCommand,
+		pullOfficialTemplatesCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.pullSampleData",
-		pullSampleDataCommand,
+		pullSampleDataCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.pullTemplates",
-		pullTemplatesCommand,
+		pullTemplatesCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.pushTemplates",
-		pushTemplatesCommand,
+		pushTemplatesCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.loginRegistry",
-		loginRegistryCommand,
+		loginRegistryCommand
 	);
 
 	registerCommand(
 		context,
 		"microsoft.health.fhir.converter.logoutRegistry",
-		logoutRegistryCommand,
+		logoutRegistryCommand
 	);
 
 	// Extract Oras
@@ -150,7 +150,7 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate(
-	context: vscode.ExtensionContext,
+	context: vscode.ExtensionContext
 ): Thenable<void> | undefined {
 	// Stops the language client if it was created
 	if (!client) {
@@ -162,13 +162,13 @@ export function deactivate(
 function updateTemplateFolderToWorkspaceFolder() {
 	const templateFolder: string =
 		globals.settingManager.getWorkspaceConfiguration(
-			configurationConstants.TemplateFolderKey,
+			configurationConstants.TemplateFolderKey
 		);
 	if (templateFolder) {
 		const folders = vscode.workspace.workspaceFolders;
 		const folderName = stringUtils.generatePrettyFolderName(
 			templateFolder,
-			localize("common.templateFolder.suffix"),
+			localize("common.templateFolder.suffix")
 		);
 		if (!folders) {
 			vscode.workspace.updateWorkspaceFolders(0, null, {
@@ -183,7 +183,7 @@ function updateTemplateFolderToWorkspaceFolder() {
 		}
 	} else {
 		throw new ConfigurationError(
-			localize("message.noTemplateFolderProvided"),
+			localize("message.noTemplateFolderProvided")
 		);
 	}
 }

@@ -18,7 +18,7 @@ export async function pullOfficialTemplatesCommand() {
 	// Get the template type
 	const selectedTemplateType = await showQuickPick(
 		localize("message.selectTemplateType"),
-		Object.values(TemplateType),
+		Object.values(TemplateType)
 	);
 	let tagsUrl, templateImageBaseReference;
 	tagsUrl = constants.ImageTagsUrls[selectedTemplateType];
@@ -30,14 +30,14 @@ export async function pullOfficialTemplatesCommand() {
 		// Get the version
 		const selectedVersion = await showQuickPick(
 			localize("message.selectTemplateVesion"),
-			tags,
+			tags
 		);
 		if (selectedVersion) {
 			// If user selected a version, pull the image with this verison
 			const imageReference = `${templateImageBaseReference}:${selectedVersion}`;
 			await pullImage(
 				imageReference,
-				localize("message.pullingTemplates"),
+				localize("message.pullingTemplates")
 			);
 		}
 	}

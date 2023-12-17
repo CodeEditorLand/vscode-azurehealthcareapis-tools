@@ -28,7 +28,7 @@ export class Converter {
 		const resultName = stringUtils.getFileNameWithoutTwoExt(filePath);
 		const files: string[] = fileUtils.getAllPaths(
 			this._resultFolder,
-			`/**/${resultName}.*.json`,
+			`/**/${resultName}.*.json`
 		);
 		const sortedFiles = stringUtils.getDescendingSortString(files);
 		return sortedFiles;
@@ -37,7 +37,7 @@ export class Converter {
 	async clearHistory(
 		filePath: string,
 		maxNum = engineConstants.MaxHistoryFilesNum,
-		remainNum = engineConstants.RemainHistoryFilesNum,
+		remainNum = engineConstants.RemainHistoryFilesNum
 	) {
 		const files = this.getHistory(filePath);
 		if (files.length > maxNum) {
@@ -53,7 +53,7 @@ export class Converter {
 								resolve();
 							}
 						});
-					}),
+					})
 				);
 			}
 			await Promise.all(promiseAll);

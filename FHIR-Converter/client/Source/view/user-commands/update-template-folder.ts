@@ -12,7 +12,7 @@ import { globals } from "../../core/globals";
 export async function updateTemplateFolderCommand() {
 	// Select a root template folder
 	const templateFolder: vscode.Uri = await interaction.openDialogSelectFolder(
-		localize("message.selectRootTemplateFolder"),
+		localize("message.selectRootTemplateFolder")
 	);
 	if (!templateFolder) {
 		return undefined;
@@ -21,6 +21,6 @@ export async function updateTemplateFolderCommand() {
 	// Update the configuration
 	await globals.settingManager.updateWorkspaceConfiguration(
 		configurationConstants.TemplateFolderKey,
-		templateFolder.fsPath,
+		templateFolder.fsPath
 	);
 }

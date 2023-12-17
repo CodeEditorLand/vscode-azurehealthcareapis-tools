@@ -31,8 +31,8 @@ export class Localize {
 		return args.length
 			? message.replace(
 					/\{(\d+)\}/g,
-					(match, rest: any[]) => args[rest[0]] || match,
-			  )
+					(match, rest: any[]) => args[rest[0]] || match
+				)
 			: message;
 	}
 
@@ -47,7 +47,7 @@ export class Localize {
 		const resolvedLanguage = this.recurseCandidates(
 			rootPath,
 			languageFormat,
-			this.options.locale,
+			this.options.locale
 		);
 
 		const languageFilePath = resolve(rootPath, resolvedLanguage);
@@ -56,11 +56,11 @@ export class Localize {
 			const defaultLanguageBundle = JSON.parse(
 				resolvedLanguage !== defaultLanguage
 					? readFileSync(resolve(rootPath, defaultLanguage), "utf-8")
-					: "{}",
+					: "{}"
 			);
 
 			const resolvedLanguageBundle = JSON.parse(
-				readFileSync(languageFilePath, "utf-8"),
+				readFileSync(languageFilePath, "utf-8")
 			);
 
 			return { ...defaultLanguageBundle, ...resolvedLanguageBundle };
@@ -72,7 +72,7 @@ export class Localize {
 	private recurseCandidates(
 		rootPath: string,
 		format: string,
-		candidate: string,
+		candidate: string
 	): string {
 		const filename = format.replace("{0}", `.${candidate}`);
 		const filepath = resolve(rootPath, filename);
@@ -83,7 +83,7 @@ export class Localize {
 			return this.recurseCandidates(
 				rootPath,
 				format,
-				candidate.split("-")[0],
+				candidate.split("-")[0]
 			);
 		}
 		return format.replace("{0}", "");

@@ -16,12 +16,12 @@ export async function selectFileFromExplorer(event: any, type: FileType) {
 		if (type === FileType.Data) {
 			await globals.settingManager.updateWorkspaceState(
 				stateConstants.DataKey,
-				event.fsPath,
+				event.fsPath
 			);
 		} else if (type === FileType.Template) {
 			await globals.settingManager.updateWorkspaceState(
 				stateConstants.TemplateKey,
-				event.fsPath,
+				event.fsPath
 			);
 		}
 		// Set status bar

@@ -8,7 +8,7 @@ import localize from "../../../i18n/localize";
 
 export const diagnosticsCollection =
 	vscode.languages.createDiagnosticCollection(
-		"vscode-health-fhir-converter.unusedSegments",
+		"vscode-health-fhir-converter.unusedSegments"
 	);
 
 interface IDiagnosticComponent {
@@ -18,7 +18,7 @@ interface IDiagnosticComponent {
 
 export function updateDiagnostics(
 	uri: vscode.Uri,
-	unusedSegments: object[],
+	unusedSegments: object[]
 ): void {
 	const diagnostics: vscode.Diagnostic[] = [];
 	const components = getComponentsList(unusedSegments);
@@ -29,7 +29,7 @@ export function updateDiagnostics(
 }
 
 export function getComponentsList(
-	unusedSegments: object[],
+	unusedSegments: object[]
 ): IDiagnosticComponent[] {
 	const result: IDiagnosticComponent[] = [];
 	if (!unusedSegments) {
@@ -58,12 +58,12 @@ export function getComponentsList(
 }
 
 export function createWarningDiagnostic(
-	component: IDiagnosticComponent,
+	component: IDiagnosticComponent
 ): vscode.Diagnostic {
 	const diagnostic = new vscode.Diagnostic(
 		component.range,
 		localize("message.unusedSegment", component.value),
-		vscode.DiagnosticSeverity.Warning,
+		vscode.DiagnosticSeverity.Warning
 	);
 	return diagnostic;
 }

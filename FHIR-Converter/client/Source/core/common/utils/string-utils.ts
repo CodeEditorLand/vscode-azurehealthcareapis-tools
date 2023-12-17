@@ -15,7 +15,7 @@ export function convertPrettyJsonString(json: object) {
 
 export function generatePrettyFolderName(
 	templateFolder: string,
-	templateFolderSuffix: string,
+	templateFolderSuffix: string
 ) {
 	return path.basename(templateFolder) + " " + templateFolderSuffix;
 }
@@ -25,7 +25,7 @@ export function getStatusBarString(
 	activeTemplatePath: string | undefined,
 	extensionTitle: string,
 	dataTitle: string,
-	templateTitle: string,
+	templateTitle: string
 ) {
 	let dataName = "none";
 	let templateName = "none";
@@ -59,14 +59,14 @@ export function getTimestampFromFilename(filePath: string) {
 
 export function addTimestampToFilename(filePath: string, timestamp: string) {
 	return `${getFileNameWithoutExt(filePath)}.${timestamp}${getFileNameExt(
-		filePath,
+		filePath
 	)}`;
 }
 
 export function getResultFileName(
 	dataPath: string,
 	templatePath: string,
-	timestamp: string,
+	timestamp: string
 ) {
 	const dataName = getFileNameWithoutExt(dataPath);
 	const templateName = getFileNameWithoutExt(templatePath);
@@ -76,7 +76,7 @@ export function getResultFileName(
 
 export function getDiffResultFileName(
 	resultFilePath1: string,
-	resultFilePath2: string,
+	resultFilePath2: string
 ) {
 	const timestamp1 = getTimestampFromFilename(resultFilePath1);
 	const timestamp2 = getTimestampFromFilename(resultFilePath2);
@@ -90,7 +90,7 @@ export function getDescendingSortString(list: string[]) {
 
 export function getDigest(str: string) {
 	const result = str.match(
-		/[A-Za-z][A-Za-z0-9]*([+.-_][A-Za-z][A-Za-z0-9]*)*:[0-9a-fA-F]{32,}/,
+		/[A-Za-z][A-Za-z0-9]*([+.-_][A-Za-z][A-Za-z0-9]*)*:[0-9a-fA-F]{32,}/
 	);
 	if (!result) {
 		return undefined;
