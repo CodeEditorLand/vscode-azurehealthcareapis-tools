@@ -12,7 +12,7 @@ export async function pullTemplatesCommand() {
 	// Get the image reference
 	const imageReference = await showInputBox(
 		localize("message.inputPullImageReference"),
-		workspaceStateConstants.ImageReferenceKey
+		workspaceStateConstants.ImageReferenceKey,
 	);
 	if (!imageReference) {
 		return undefined;

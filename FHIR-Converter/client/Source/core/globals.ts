@@ -5,6 +5,6 @@
 
 import { SettingManager } from "./settings/settings-manager";
 
-export module globals {
+export namespace globals {
 	export let settingManager: SettingManager;
 }

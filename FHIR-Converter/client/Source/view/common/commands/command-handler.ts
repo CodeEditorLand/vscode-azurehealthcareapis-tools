@@ -3,14 +3,14 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as errorHandler from "../error/error-handler";
 import * as configurationConstants from "../../../core/common/constants/workspace-configuration";
-import localize from "../../../i18n/localize";
-import { converterWorkspaceExists } from "../workspace/converter-workspace-exists";
-import { ConversionError } from "../../../core/common/errors/conversion-error";
 import { ConfigurationError } from "../../../core/common/errors/configuration-error";
-import { reporter } from "../../../telemetry/telemetry";
+import { ConversionError } from "../../../core/common/errors/conversion-error";
 import { PlatformHandler } from "../../../core/platform/platform-handler";
+import localize from "../../../i18n/localize";
+import { reporter } from "../../../telemetry/telemetry";
+import * as errorHandler from "../error/error-handler";
+import { converterWorkspaceExists } from "../workspace/converter-workspace-exists";
 
 const commandsNeedWorkspace = [
 	"selectDataCommand",
@@ -30,11 +30,11 @@ export async function commandHandler(event) {
 		if (
 			commandsNeedWorkspace.includes(this.name) &&
 			!converterWorkspaceExists(
-				configurationConstants.WorkspaceFileExtension
+				configurationConstants.WorkspaceFileExtension,
 			)
 		) {
 			throw new ConfigurationError(
-				localize("message.needCreateWorkspace")
+				localize("message.needCreateWorkspace"),
 			);
 		}
 
@@ -47,7 +47,7 @@ export async function commandHandler(event) {
 		reporter.sendTelemetryEvent(
 			"command",
 			{ command: this.name },
-			{ costTime: costTime }
+			{ costTime: costTime },
 		);
 	} catch (error) {
 		// Handle the error

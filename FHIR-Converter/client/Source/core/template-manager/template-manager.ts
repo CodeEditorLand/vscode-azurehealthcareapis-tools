@@ -9,7 +9,7 @@ export interface ITemplateManager {
 	pullTemplates(
 		imageReference: string,
 		outputFolder: string,
-		force: boolean
+		force: boolean,
 	): string;
 	pushTemplates(imageReference: string, inputFolder: string): string;
 }

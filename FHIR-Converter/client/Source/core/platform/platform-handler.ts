@@ -3,15 +3,15 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
+import * as cp from "child_process";
+import * as os from "os";
+import * as path from "path";
+import * as engineConstants from "../common/constants/engine";
+import { TemplateManagementError } from "../common/errors/template-management-error";
 import * as osUtils from "../common/utils/os-utils";
 import { WindowsPlatformData } from "./Windows-platform-data";
 import { MacPlatformData } from "./mac-platform-data";
 import { IPlatformData } from "./platform-data";
-import * as cp from "child_process";
-import * as engineConstants from "../common/constants/engine";
-import { TemplateManagementError } from "../common/errors/template-management-error";
-import * as path from "path";
-import * as os from "os";
 
 export class PlatformHandler {
 	private static _instance = new PlatformHandler();
@@ -34,7 +34,7 @@ export class PlatformHandler {
 		return this.platformData;
 	}
 
-	isSupportedOS(): Boolean {
+	isSupportedOS(): boolean {
 		if (this.supportedOS.includes(os.platform())) {
 			return true;
 		}

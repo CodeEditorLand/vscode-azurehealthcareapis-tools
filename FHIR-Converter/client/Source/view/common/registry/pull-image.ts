@@ -3,20 +3,20 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import localize from "../../../i18n/localize";
-import * as vscode from "vscode";
-import * as interaction from "../../common/file-dialog/file-dialog-interaction";
-import { TemplateManagerFactory } from "../../../core/template-manager/template-manager-factory";
-import { PlatformHandler } from "../../../core/platform/platform-handler";
-import * as fileUtils from "../../../core/common/utils/file-utils";
 import * as cp from "child_process";
 import * as path from "path";
+import * as vscode from "vscode";
+import * as fileUtils from "../../../core/common/utils/file-utils";
+import { PlatformHandler } from "../../../core/platform/platform-handler";
+import { TemplateManagerFactory } from "../../../core/template-manager/template-manager-factory";
+import localize from "../../../i18n/localize";
+import * as interaction from "../../common/file-dialog/file-dialog-interaction";
 
 export async function pullImage(imageReference, text) {
 	// Add pull bar
 	const pullBar: vscode.StatusBarItem = vscode.window.createStatusBarItem(
 		vscode.StatusBarAlignment.Left,
-		0
+		0,
 	);
 	pullBar.text = `$(sync~spin) ${text}...`;
 	pullBar.show();
@@ -26,14 +26,14 @@ export async function pullImage(imageReference, text) {
 		let workspaceFolder = undefined;
 		if (vscode.workspace.workspaceFile) {
 			workspaceFolder = path.dirname(
-				vscode.workspace.workspaceFile.fsPath
+				vscode.workspace.workspaceFile.fsPath,
 			);
 		}
 
 		// Select the output folder
 		const outputFolder = await interaction.openDialogSelectFolder(
 			localize("message.selectOutputFolder"),
-			workspaceFolder
+			workspaceFolder,
 		);
 		if (!outputFolder) {
 			return undefined;
@@ -45,7 +45,7 @@ export async function pullImage(imageReference, text) {
 			const select = await vscode.window.showWarningMessage(
 				localize("message.nonEmptyFolderForcePushOrNot"),
 				localize("message.force"),
-				localize("message.cancel")
+				localize("message.cancel"),
 			);
 			if (select === localize("message.force")) {
 				force = true;
@@ -62,7 +62,7 @@ export async function pullImage(imageReference, text) {
 		const output = templateManager.pullTemplates(
 			imageReference,
 			outputFolder.fsPath,
-			force
+			force,
 		);
 
 		// Show ouput message

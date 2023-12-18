@@ -1,5 +1,5 @@
-import { IPlatformData } from "./platform-data";
 import { WorkspaceFileExtension } from "../common/constants/workspace-configuration";
+import { IPlatformData } from "./platform-data";
 
 export class MacPlatformData implements IPlatformData {
 	public get orasExecCmd() {

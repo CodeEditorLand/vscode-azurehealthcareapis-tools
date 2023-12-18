@@ -3,17 +3,17 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import localize from "../../i18n/localize";
 import * as vscode from "vscode";
-import * as configurationConstants from "../../core/common/constants/workspace-configuration";
-import * as interaction from "../common/file-dialog/file-dialog-interaction";
 import * as engineConstants from "../../core/common/constants/engine";
+import * as configurationConstants from "../../core/common/constants/workspace-configuration";
 import * as stateConstants from "../../core/common/constants/workspace-state";
-import * as unusedSegmentsDiagnostic from "../common/diagnostic/used-segments-diagnostic";
+import { ConverterEngineFactory } from "../../core/converter/converter-factory";
 import { globals } from "../../core/globals";
+import localize from "../../i18n/localize";
+import * as unusedSegmentsDiagnostic from "../common/diagnostic/used-segments-diagnostic";
 import { showDifferentialView } from "../common/editor/show-differential-view";
 import { showResultEditor } from "../common/editor/show-result-editor";
-import { ConverterEngineFactory } from "../../core/converter/converter-factory";
+import * as interaction from "../common/file-dialog/file-dialog-interaction";
 
 export async function convertCommand() {
 	// Add conversion bar
@@ -31,13 +31,13 @@ export async function convertCommand() {
 				unsavedTemplates,
 				localize("message.saveTemplatesBeforeRefresh"),
 				localize("message.save"),
-				localize("message.ignore")
+				localize("message.ignore"),
 			);
 		}
 
 		// Get the data file
 		const dataFile = globals.settingManager.getWorkspaceState(
-			stateConstants.DataKey
+			stateConstants.DataKey,
 		);
 
 		// Check whether data file is dirty and not saved and ask if users want to save it
@@ -47,7 +47,7 @@ export async function convertCommand() {
 				[doc],
 				localize("message.saveDataBeforeRefresh"),
 				localize("message.save"),
-				localize("message.ignore")
+				localize("message.ignore"),
 			);
 		}
 
@@ -61,13 +61,13 @@ export async function convertCommand() {
 		// Add trace info to the template
 		const enableUnusedSegmentsDiagnostic =
 			globals.settingManager.getWorkspaceConfiguration(
-				configurationConstants.enableUnusedSegmentsDiagnosticKey
+				configurationConstants.enableUnusedSegmentsDiagnosticKey,
 			);
 		if (enableUnusedSegmentsDiagnostic) {
 			const traceInfo = result.traceInfo;
 			unusedSegmentsDiagnostic.updateDiagnostics(
 				vscode.Uri.file(dataFile),
-				traceInfo["UnusedSegments"]
+				traceInfo["UnusedSegments"],
 			);
 		} else {
 			unusedSegmentsDiagnostic.clearDiagnostics();
@@ -80,7 +80,7 @@ export async function convertCommand() {
 
 		// Open the template in the editor
 		const templateFile = globals.settingManager.getWorkspaceState(
-			stateConstants.TemplateKey
+			stateConstants.TemplateKey,
 		);
 		await vscode.window.showTextDocument(vscode.Uri.file(templateFile), {
 			viewColumn: vscode.ViewColumn.Two,
@@ -88,11 +88,9 @@ export async function convertCommand() {
 
 		// Obtain the enableDiffView option from the settings.
 		const enableDiff = globals.settingManager.getWorkspaceConfiguration(
-			configurationConstants.enableDiffViewKey
+			configurationConstants.enableDiffViewKey,
 		);
-		if (!enableDiff) {
-			await showResultEditor(vscode.Uri.file(result.resultFile));
-		} else {
+		if (enableDiff) {
 			// Get the history
 			const history = converter.getHistory(result.resultFile);
 			if (history.length === 1) {
@@ -102,12 +100,14 @@ export async function convertCommand() {
 				// Show result with the differential view
 				await showDifferentialView(
 					vscode.Uri.file(history[1]),
-					vscode.Uri.file(history[0])
+					vscode.Uri.file(history[0]),
 				);
 			}
+		} else {
+			await showResultEditor(vscode.Uri.file(result.resultFile));
 		}
 		await vscode.commands.executeCommand(
-			"workbench.action.closeOtherEditors"
+			"workbench.action.closeOtherEditors",
 		);
 	} finally {
 		// hide the conversion bar

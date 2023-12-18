@@ -6,9 +6,9 @@
 import * as constants from "../common/constants";
 
 import {
-	TextDocuments,
 	ClientCapabilities,
 	Connection,
+	TextDocuments,
 } from "vscode-languageserver";
 
 import { TextDocument } from "vscode-languageserver-textdocument";
@@ -22,7 +22,7 @@ export class SettingsManager {
 	// Create a simple text document manager. The text document manager
 	// supports full document sync only
 	private documents: TextDocuments<TextDocument> = new TextDocuments(
-		TextDocument
+		TextDocument,
 	);
 
 	// Cache the settings of all open documents
@@ -38,12 +38,12 @@ export class SettingsManager {
 	};
 	private globalSettings: FhirConverterSettings = this.defaultSettings;
 
-	private hasConfigurationCapability: boolean = false;
+	private hasConfigurationCapability = false;
 
 	constructor(
 		private connection: Connection,
 		capabilities: ClientCapabilities,
-		callback: (doc: TextDocument) => void
+		callback: (doc: TextDocument) => void,
 	) {
 		// Does the client support the `workspace/configuration` request?
 		// If not, we will fall back using global settings
@@ -67,7 +67,7 @@ export class SettingsManager {
 	}
 
 	public getDocumentSettings(
-		resource: string
+		resource: string,
 	): Thenable<FhirConverterSettings> {
 		if (!this.hasConfigurationCapability) {
 			return Promise.resolve(this.globalSettings);
