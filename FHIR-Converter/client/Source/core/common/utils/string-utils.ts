@@ -17,7 +17,7 @@ export function generatePrettyFolderName(
 	templateFolder: string,
 	templateFolderSuffix: string,
 ) {
-	return path.basename(templateFolder) + " " + templateFolderSuffix;
+	return `${path.basename(templateFolder)} ${templateFolderSuffix}`;
 }
 
 export function getStatusBarString(

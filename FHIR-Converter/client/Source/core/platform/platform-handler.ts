@@ -16,7 +16,7 @@ import { IPlatformData } from "./platform-data";
 export class PlatformHandler {
 	private static _instance = new PlatformHandler();
 	private platformData: IPlatformData;
-	private supportedOS: Array<string> = ["win32", "darwin"];
+	private supportedOS: string[] = ["win32", "darwin"];
 
 	private constructor() {
 		if (osUtils.isWindows()) {

@@ -11,7 +11,7 @@ import localize from "../../../i18n/localize";
 import { setStatusBar } from "../status-bar/set-status-bar";
 
 export async function selectFileFromExplorer(event: any, type: FileType) {
-	if (event && event.fsPath) {
+	if (event?.fsPath) {
 		// Update the active files
 		if (type === FileType.Data) {
 			await globals.settingManager.updateWorkspaceState(

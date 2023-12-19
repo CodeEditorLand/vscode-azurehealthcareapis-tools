@@ -20,7 +20,8 @@ export async function pullOfficialTemplatesCommand() {
 		localize("message.selectTemplateType"),
 		Object.values(TemplateType),
 	);
-	let tagsUrl, templateImageBaseReference;
+	let tagsUrl;
+	let templateImageBaseReference;
 	tagsUrl = constants.ImageTagsUrls[selectedTemplateType];
 	templateImageBaseReference =
 		constants.TemplateImageBaseReferences[selectedTemplateType];

@@ -89,7 +89,7 @@ export async function askCreateMetadata(
 export function getUnsavedFiles(type: string) {
 	const unsavedFiles: vscode.TextDocument[] = [];
 	for (const doc of vscode.workspace.textDocuments) {
-		if (doc && doc.isDirty && path.extname(doc.fileName) === type) {
+		if (doc?.isDirty && path.extname(doc.fileName) === type) {
 			unsavedFiles.push(doc);
 		}
 	}
@@ -103,7 +103,7 @@ export async function saveAllFiles(unsavedFiles: vscode.TextDocument[]) {
 export function isDirtyFile(filePath: string) {
 	if (filePath) {
 		for (const doc of vscode.workspace.textDocuments) {
-			if (doc && doc.isDirty && doc.fileName === filePath) {
+			if (doc?.isDirty && doc.fileName === filePath) {
 				return doc;
 			}
 		}
