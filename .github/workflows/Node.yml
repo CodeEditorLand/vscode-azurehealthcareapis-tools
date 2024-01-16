@@ -85,7 +85,7 @@ jobs:
             - run: pnpm run prepublishOnly
               working-directory: .
 
-            - uses: actions/upload-artifact@v4.0.0
+            - uses: actions/upload-artifact@v4.1.0
               with:
                   name: .-FHIR-Converter-client-Node-${{ matrix.node-version }}-Target
                   path: ./FHIR-Converter/client/Target
@@ -102,7 +102,7 @@ jobs:
             - run: pnpm run prepublishOnly
               working-directory: .
 
-            - uses: actions/upload-artifact@v4.0.0
+            - uses: actions/upload-artifact@v4.1.0
               with:
                   name: .-FHIR-Converter-Node-${{ matrix.node-version }}-Target
                   path: ./FHIR-Converter/Target
@@ -122,7 +122,7 @@ jobs:
             - run: pnpm run prepublishOnly
               working-directory: .
 
-            - uses: actions/upload-artifact@v4.0.0
+            - uses: actions/upload-artifact@v4.1.0
               with:
                   name: .-FHIR-Converter-server-Node-${{ matrix.node-version }}-Target
                   path: ./FHIR-Converter/server/Target
