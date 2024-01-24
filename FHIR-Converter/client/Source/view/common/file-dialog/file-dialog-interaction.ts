@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "path";
+import * as path from "node:path";
 import * as vscode from "vscode";
 import { MetadataType } from "../../../core/common/enum/metadata-type";
 import * as fileUtils from "../../../core/common/utils/file-utils";

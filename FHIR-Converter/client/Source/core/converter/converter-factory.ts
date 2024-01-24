@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as fs from "fs";
+import * as fs from "node:fs";
 import localize from "../../i18n/localize";
 import * as configurationConstants from "../common/constants/workspace-configuration";
 import * as stateConstants from "../common/constants/workspace-state";

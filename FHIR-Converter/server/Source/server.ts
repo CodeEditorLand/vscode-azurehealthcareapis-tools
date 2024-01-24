@@ -4,22 +4,22 @@
  */
 
 import {
-	CompletionItem,
+	type CompletionItem,
 	CompletionItemKind,
-	DefinitionLink,
-	DefinitionParams,
-	Diagnostic,
+	type DefinitionLink,
+	type DefinitionParams,
+	type Diagnostic,
 	DiagnosticSeverity,
-	InitializeParams,
-	InitializeResult,
+	type InitializeParams,
+	type InitializeResult,
 	ProposedFeatures,
-	TextDocumentPositionParams,
+	type TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	TextDocuments,
 	createConnection,
 } from "vscode-languageserver";
 
-import * as path from "path";
+import * as path from "node:path";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { SettingsManager } from "./common/settings-manager";
 import * as utils from "./common/utils";

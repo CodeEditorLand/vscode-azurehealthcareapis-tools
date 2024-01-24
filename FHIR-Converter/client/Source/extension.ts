@@ -3,9 +3,9 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "path";
+import * as path from "node:path";
 import * as vscode from "vscode";
-import { LanguageClient } from "vscode-languageclient";
+import type { LanguageClient } from "vscode-languageclient";
 import * as configurationConstants from "./core/common/constants/workspace-configuration";
 import { ConfigurationError } from "./core/common/errors/configuration-error";
 import { checkCreateFolders } from "./core/common/utils/file-utils";

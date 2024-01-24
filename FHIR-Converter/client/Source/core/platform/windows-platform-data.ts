@@ -1,4 +1,4 @@
-import { IPlatformData } from "./platform-data";
+import type { IPlatformData } from "./platform-data";
 
 export class WindowsPlatformData implements IPlatformData {
 	public get orasExecCmd() {

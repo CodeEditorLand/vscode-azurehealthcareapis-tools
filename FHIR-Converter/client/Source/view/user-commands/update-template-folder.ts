@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as vscode from "vscode";
+import type * as vscode from "vscode";
 import * as configurationConstants from "../../core/common/constants/workspace-configuration";
 import { globals } from "../../core/globals";
 import localize from "../../i18n/localize";

@@ -6,8 +6,8 @@
 import * as constants from "../common/constants";
 
 import {
-	ClientCapabilities,
-	Connection,
+	type ClientCapabilities,
+	type Connection,
 	TextDocuments,
 } from "vscode-languageserver";
 

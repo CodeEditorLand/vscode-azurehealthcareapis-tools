@@ -3,12 +3,12 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "path";
-import * as vscode from "vscode";
+import * as path from "node:path";
+import type * as vscode from "vscode";
 import {
 	LanguageClient,
-	LanguageClientOptions,
-	ServerOptions,
+	type LanguageClientOptions,
+	type ServerOptions,
 	TransportKind,
 } from "vscode-languageclient";
 import * as engineConstants from "../common/constants/engine";

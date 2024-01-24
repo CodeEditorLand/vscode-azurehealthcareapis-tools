@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "path";
+import * as path from "node:path";
 import * as glob from "glob";
 import * as constants from "../common/constants";
 
@@ -35,7 +35,7 @@ export function getSnippetTemplateName(
 }
 
 export function getAllTemplatePaths(directory: string): string[] {
-	const searchPattern = directory + `/**/*${constants.EngineTemplateFileExt}`;
+	const searchPattern = `${directory}/**/*${constants.EngineTemplateFileExt}`;
 	const files: string[] = glob
 		.sync(searchPattern, {})
 		.map((uri) => path.relative(directory, uri).replace(/\\/g, "/"));
