@@ -24,7 +24,7 @@
 	},
 	"dependencies": {
 		"@types/glob": "8.1.0",
-		"axios": "1.6.5",
+		"axios": "1.6.6",
 		"glob": "10.3.10",
 		"vscode-extension-telemetry": "0.1.6",
 		"vscode-languageclient": "9.0.1"
