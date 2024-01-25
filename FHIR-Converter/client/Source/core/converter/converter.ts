@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as fs from "node:fs";
+import * as fs from "fs";
 import * as engineConstants from "../common/constants/engine";
 import * as fileUtils from "../common/utils/file-utils";
 import * as stringUtils from "../common/utils/string-utils";

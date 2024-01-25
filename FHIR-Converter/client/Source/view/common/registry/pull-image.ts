@@ -3,8 +3,8 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as cp from "node:child_process";
-import * as path from "node:path";
+import * as cp from "child_process";
+import * as path from "path";
 import * as vscode from "vscode";
 import * as fileUtils from "../../../core/common/utils/file-utils";
 import { PlatformHandler } from "../../../core/platform/platform-handler";

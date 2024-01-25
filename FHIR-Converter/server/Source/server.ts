@@ -19,7 +19,7 @@ import {
 	createConnection,
 } from "vscode-languageserver";
 
-import * as path from "node:path";
+import * as path from "path";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { SettingsManager } from "./common/settings-manager";
 import * as utils from "./common/utils";

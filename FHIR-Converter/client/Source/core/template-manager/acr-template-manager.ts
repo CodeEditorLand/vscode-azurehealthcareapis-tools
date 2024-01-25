@@ -3,8 +3,8 @@
  *  Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as cp from "node:child_process";
-import * as path from "node:path";
+import * as cp from "child_process";
+import * as path from "path";
 import { TemplateManagementError } from "../../core/common/errors/template-management-error";
 import * as engineConstants from "../common/constants/engine";
 import * as stringUtils from "../common/utils/string-utils";

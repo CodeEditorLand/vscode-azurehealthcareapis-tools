@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "node:path";
+import * as path from "path";
 
 export function getFileNameExt(filePath: string): string {
 	return path.extname(filePath);

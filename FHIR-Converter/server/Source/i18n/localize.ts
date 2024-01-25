@@ -3,8 +3,8 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import { existsSync, readFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { existsSync, readFileSync } from "fs";
+import { join, resolve } from "path";
 import type { ILanguagePack } from "./language-pack";
 
 export class Localize {

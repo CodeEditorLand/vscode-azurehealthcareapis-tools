@@ -1,39 +1,39 @@
 {
-	"name": "vscode-health-fhir-converter-client",
-	"version": "0.0.1",
-	"private": false,
-	"description": "Language client for FHIR Converter",
-	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-	"bugs": {
-		"url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Nikola Hristov",
-		"email": "nikola@nikolahristov.tech",
-		"url": "https://nikolahristov.tech"
-	},
-	"publisher": "playform",
-	"type": "module",
-	"scripts": {
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-	},
-	"dependencies": {
-		"@types/glob": "8.1.0",
-		"axios": "1.6.6",
-		"glob": "10.3.10",
-		"vscode-extension-telemetry": "0.1.6",
-		"vscode-languageclient": "9.0.1"
-	},
-	"devDependencies": {
-		"typescript-esbuild": "0.3.6"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"preview": true
+  "author": {
+    "email": "nikola@nikolahristov.tech",
+    "name": "Nikola Hristov",
+    "url": "https://nikolahristov.tech"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "dependencies": {
+    "@types/glob": "8.1.0",
+    "axios": "1.6.6",
+    "glob": "10.3.10",
+    "vscode-extension-telemetry": "0.1.6",
+    "vscode-languageclient": "9.0.1"
+  },
+  "description": "Language client for FHIR Converter",
+  "devDependencies": {
+    "typescript-esbuild": "0.3.3"
+  },
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "license": "SEE LICENSE IN LICENSE",
+  "name": "vscode-health-fhir-converter-client",
+  "preview": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "publisher": "playform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+  },
+  "scripts": {
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }

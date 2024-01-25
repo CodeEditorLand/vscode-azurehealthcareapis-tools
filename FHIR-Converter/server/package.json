@@ -1,37 +1,37 @@
 {
-	"name": "vscode-health-fhir-converter-server",
-	"version": "0.0.1",
-	"private": false,
-	"description": "Language server for FHIR Converter",
-	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-	"bugs": {
-		"url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Nikola Hristov",
-		"email": "nikola@nikolahristov.tech",
-		"url": "https://nikolahristov.tech"
-	},
-	"publisher": "playform",
-	"type": "module",
-	"scripts": {
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-	},
-	"dependencies": {
-		"@types/glob": "8.1.0",
-		"glob": "10.3.10",
-		"vscode-languageserver": "9.0.1",
-		"vscode-languageserver-textdocument": "1.0.11"
-	},
-	"devDependencies": {
-		"typescript-esbuild": "0.3.6"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+  "author": {
+    "email": "nikola@nikolahristov.tech",
+    "name": "Nikola Hristov",
+    "url": "https://nikolahristov.tech"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "dependencies": {
+    "@types/glob": "8.1.0",
+    "glob": "10.3.10",
+    "vscode-languageserver": "9.0.1",
+    "vscode-languageserver-textdocument": "1.0.11"
+  },
+  "description": "Language server for FHIR Converter",
+  "devDependencies": {
+    "typescript-esbuild": "0.3.3"
+  },
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "license": "SEE LICENSE IN LICENSE",
+  "name": "vscode-health-fhir-converter-server",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "publisher": "playform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+  },
+  "scripts": {
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
