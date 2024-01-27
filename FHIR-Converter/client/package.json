@@ -1,39 +1,22 @@
 {
-  "author": {
-    "email": "nikola@nikolahristov.tech",
-    "name": "Nikola Hristov",
-    "url": "https://nikolahristov.tech"
-  },
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-  },
-  "dependencies": {
-    "@types/glob": "8.1.0",
-    "axios": "1.6.6",
-    "glob": "10.3.10",
-    "vscode-extension-telemetry": "0.1.6",
-    "vscode-languageclient": "9.0.1"
-  },
-  "description": "Language client for FHIR Converter",
-  "devDependencies": {
-    "typescript-esbuild": "0.3.3"
-  },
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-  "license": "SEE LICENSE IN LICENSE",
-  "name": "vscode-health-fhir-converter-client",
-  "preview": true,
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "publisher": "playform",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
-  },
-  "scripts": {
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-  },
-  "type": "module",
-  "version": "0.0.1"
+	"name": "vscode-health-fhir-converter-client",
+	"publisher": "ms-azuretools",
+	"description": "Language client for FHIR Converter",
+	"version": "1.2.0",
+	"license": "MIT",
+	"preview": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+	},
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"dependencies": {
+		"@types/glob": "^7.1.1",
+		"axios": "^0.21.2",
+		"glob": "^7.1.4",
+		"vscode-extension-telemetry": "^0.1.6",
+		"vscode-languageclient": "^6.1.1"
+	}
 }
