@@ -9,9 +9,9 @@
   "license": "MIT",
   "publisher": "ms-azuretools",
   "dependencies": {
-    "@types/glob": "^7.1.1",
-    "glob": "^7.1.4",
-    "vscode-languageserver": "^6.1.1",
-    "vscode-languageserver-textdocument": "^1.0.1"
+    "@types/glob": "7.1.1",
+    "glob": "7.1.4",
+    "vscode-languageserver": "6.1.1",
+    "vscode-languageserver-textdocument": "1.0.1"
   }
 }
