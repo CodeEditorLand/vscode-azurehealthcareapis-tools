@@ -1,17 +1,20 @@
 {
-  "name": "vscode-health-fhir-converter-server",
-  "version": "1.2.0",
-  "description": "Language server for FHIR Converter",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
-  },
-  "license": "MIT",
-  "publisher": "ms-azuretools",
-  "dependencies": {
-    "@types/glob": "7.1.1",
-    "glob": "7.1.4",
-    "vscode-languageserver": "6.1.1",
-    "vscode-languageserver-textdocument": "1.0.1"
-  }
+	"name": "vscode-health-fhir-converter-server",
+	"publisher": "ms-azuretools",
+	"description": "Language server for FHIR Converter",
+	"version": "1.2.0",
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+	},
+	"dependencies": {
+		"vscode-languageserver": "^6.1.1",
+		"vscode-languageserver-textdocument": "^1.0.1",
+		"glob": "^7.1.4",
+		"@types/glob": "^7.1.1"
+	}
 }
