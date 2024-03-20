@@ -1,16 +1,25 @@
 {
 	"name": "vscode-health-fhir-converter-client",
-	"publisher": "ms-azuretools",
+	"version": "0.0.1",
+	"private": false,
 	"description": "Language client for FHIR Converter",
-	"version": "1.2.0",
-	"license": "MIT",
-	"preview": true,
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
 	},
-	"engines": {
-		"vscode": "1.44.0"
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"scripts": {
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
 	},
 	"dependencies": {
 		"@types/glob": "8.1.0",
@@ -18,5 +27,12 @@
 		"glob": "10.3.10",
 		"vscode-extension-telemetry": "0.1.6",
 		"vscode-languageclient": "9.0.1"
-	}
+	},
+	"devDependencies": {
+		"typescript-esbuild": "latest"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"preview": true
 }
