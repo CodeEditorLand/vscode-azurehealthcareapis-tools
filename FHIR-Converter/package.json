@@ -219,7 +219,7 @@
 		"nyc": "15.1.0",
 		"reflect-metadata": "0.2.1",
 		"typescript": "5.4.2",
-		"typescript-esbuild": "latest",
+		"typescript-esbuild": "0.4.5",
 		"vsce": "1.96.1",
 		"vscode-test": "1.2.0"
 	},
