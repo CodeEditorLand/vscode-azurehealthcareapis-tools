@@ -1,33 +1,32 @@
 {
-	"name": "vscode-health-fhir-converter",
-	"displayName": "FHIR Converter",
-	"version": "0.0.1",
-	"private": false,
-	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"activationEvents": [
+		"onCommand:microsoft.health.fhir.converter.convert",
+		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
+		"onCommand:microsoft.health.fhir.converter.selectTemplate",
+		"onCommand:microsoft.health.fhir.converter.selectData",
+		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
+		"onCommand:microsoft.health.fhir.converter.pullTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullSampleData",
+		"onCommand:microsoft.health.fhir.converter.pushTemplates",
+		"onCommand:microsoft.health.fhir.converter.loginRegistry",
+		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
+		"workspaceContains:**/*.liquid"
+	],
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"author": {
+		"email": "Hello@Playform.Cloud",
+		"name": "Playform",
+		"url": "https://playform.cloud"
+	},
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
-	},
-	"type": "module",
-	"main": "./client/out/extension.js",
-	"scripts": {
-		"compile": "tsc -b",
-		"download-templates": "cd test-data && sh download-templates.sh",
-		"postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
-		"package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"vscode:prepublish": "npm run compile",
-		"watch": "tsc -b -w"
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": false
 	},
 	"contributes": {
 		"commands": [
@@ -191,20 +190,7 @@
 			]
 		}
 	},
-	"activationEvents": [
-		"onCommand:microsoft.health.fhir.converter.convert",
-		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
-		"onCommand:microsoft.health.fhir.converter.selectTemplate",
-		"onCommand:microsoft.health.fhir.converter.selectData",
-		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
-		"onCommand:microsoft.health.fhir.converter.pullTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullSampleData",
-		"onCommand:microsoft.health.fhir.converter.pushTemplates",
-		"onCommand:microsoft.health.fhir.converter.loginRegistry",
-		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
-		"workspaceContains:**/*.liquid"
-	],
+	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
 	"devDependencies": {
 		"@types/glob": "8.1.0",
 		"@types/mocha": "10.0.6",
@@ -219,25 +205,39 @@
 		"nyc": "15.1.0",
 		"reflect-metadata": "0.2.1",
 		"typescript": "5.4.2",
-		"typescript-esbuild": "0.4.5",
+		"typescript-esbuild": "",
 		"vsce": "1.96.1",
 		"vscode-test": "1.2.0"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"icon": "assets/icon.png",
+	"displayName": "FHIR Converter",
+	"enableProposedApi": true,
 	"galleryBanner": {
 		"color": "#3c3c3c",
 		"theme": "dark"
 	},
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"icon": "assets/icon.png",
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./client/out/extension.js",
+	"name": "vscode-health-fhir-converter",
 	"preview": true,
-	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-	"capabilities": {
-		"untrustedWorkspaces": {
-			"supported": true
-		},
-		"virtualWorkspaces": false
+	"private": false,
+	"publishConfig": {
+		"access": "public"
 	},
-	"enableProposedApi": true
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"scripts": {
+		"compile": "tsc -b",
+		"download-templates": "cd test-data && sh download-templates.sh",
+		"package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
+		"postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"vscode:prepublish": "npm run compile",
+		"watch": "tsc -b -w"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
