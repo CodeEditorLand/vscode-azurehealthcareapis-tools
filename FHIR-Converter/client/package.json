@@ -1,22 +1,41 @@
 {
 	"name": "vscode-health-fhir-converter-client",
-	"publisher": "ms-azuretools",
+	"version": "0.0.1",
+	"private": false,
 	"description": "Language client for FHIR Converter",
-	"version": "1.2.0",
-	"license": "MIT",
-	"preview": true,
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureHealthcareAPIsTools#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureHealthcareAPIsTools/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandAzureHealthcareAPIsTools.git"
 	},
-	"engines": {
-		"vscode": "^1.44.0"
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
+	},
+	"type": "module",
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"dependencies": {
 		"@types/glob": "^7.1.1",
 		"axios": "^0.21.2",
-		"glob": "^7.1.4",
-		"vscode-extension-telemetry": "^0.1.6",
-		"vscode-languageclient": "^6.1.1"
-	}
+		"glob": "^7.1.4"
+	},
+	"devDependencies": {
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"preview": true
 }
