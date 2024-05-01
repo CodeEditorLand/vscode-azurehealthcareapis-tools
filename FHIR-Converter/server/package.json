@@ -26,8 +26,8 @@
 		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"dependencies": {
-		"@types/glob": "^7.1.1",
-		"glob": "^7.1.4"
+		"@types/glob": "8.1.0",
+		"glob": "10.3.12"
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
