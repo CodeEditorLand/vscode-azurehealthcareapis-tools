@@ -4,30 +4,30 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureHealthcareAPIsTools#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureHealthcareAPIsTools/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandAzureHealthcareAPIsTools.git"
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
 	"type": "module",
 	"main": "./client/out/extension.js",
 	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
 		"compile": "tsc -b",
 		"download-templates": "cd test-data && sh download-templates.sh",
-		"postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
-		"package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"vscode:prepublish": "npm run compile",
-		"watch": "tsc -b -w"
+		"prepublishOnly": "Build 'Source/**/*.ts'"
 	},
 	"contributes": {
 		"commands": [
@@ -206,22 +206,16 @@
 		"workspaceContains:**/*.liquid"
 	],
 	"devDependencies": {
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
 		"@types/glob": "8.1.0",
-		"@types/mocha": "10.0.6",
-		"@types/node": "20.11.30",
-		"@types/vscode": "1.87.0",
+		"@types/node": "20.12.7",
 		"chai": "5.1.0",
 		"chai-as-promised": "7.1.1",
 		"chai-subset": "1.6.0",
-		"glob": "10.3.10",
-		"mocha": "10.3.0",
-		"mocha-multi-reporters": "1.5.1",
+		"glob": "10.3.12",
 		"nyc": "15.1.0",
-		"reflect-metadata": "0.2.1",
-		"typescript": "5.4.2",
-		"typescript-esbuild": "0.4.5",
-		"vsce": "1.96.1",
-		"vscode-test": "1.2.0"
+		"reflect-metadata": "0.2.2"
 	},
 	"publishConfig": {
 		"access": "public"
