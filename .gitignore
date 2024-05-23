@@ -11,6 +11,5 @@ out
 *.userosscache
 *.sln.docstates
 *.log
-.DS_Store
 .nyc_output
 .vscode-test

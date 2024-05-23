@@ -3,8 +3,8 @@
 	"description": "Language client for FHIR Converter",
 	"dependencies": {
 		"@types/glob": "8.1.0",
-		"axios": "1.7.1",
-		"glob": "10.3.15"
+		"axios": "1.7.2",
+		"glob": "10.3.16"
 	},
 	"preview": true
 }
