@@ -1,7 +1,6 @@
 # User-specific files
 coverage
 engine
-node_modules
 out
 **/test-data/templates
 **/test-data/result
