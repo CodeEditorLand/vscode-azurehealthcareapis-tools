@@ -3,8 +3,8 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import { SettingManager } from './settings/settings-manager';
+import type { SettingManager } from "./settings/settings-manager";
 
-export module globals {
+export namespace globals {
 	export let settingManager: SettingManager;
 }

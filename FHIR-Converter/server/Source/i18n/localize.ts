@@ -3,87 +3,91 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import { existsSync, readFileSync } from 'fs';
-import { resolve, join } from 'path';
-import { ILanguagePack } from './language-pack';
+import { existsSync, readFileSync } from "fs";
+import { join, resolve } from "path";
+import type { ILanguagePack } from "./language-pack";
 
 export class Localize {
-  private bundle = this.resolveLanguagePack();
-  private options: { locale: string };
+	private bundle = this.resolveLanguagePack();
+	private options: { locale: string };
 
-  public localize(key: string, ...args: string[]): string {
-	const message = this.bundle[key] || key;
-	return this.format(message, args);
-  }
-
-  private init() {
-	try {
-		this.options = {
-		...this.options,
-		...JSON.parse(process.env.VSCODE_NLS_CONFIG || '{}')
-		};
-	} catch (err) {
-		throw err;
+	public localize(key: string, ...args: string[]): string {
+		const message = this.bundle[key] || key;
+		return this.format(message, args);
 	}
-  }
 
-  private format(message: string, args: string[] = []): string {
-	return args.length
-		? message.replace(
-			/\{(\d+)\}/g,
-			(match, rest: any[]) => args[rest[0]] || match
-		)
-		: message;
-  }
+	private init() {
+		try {
+			this.options = {
+				...this.options,
+				...JSON.parse(process.env.VSCODE_NLS_CONFIG || "{}"),
+			};
+		} catch (err) {
+			throw err;
+		}
+	}
 
-  private resolveLanguagePack(): ILanguagePack {
-	this.init();
+	private format(message: string, args: string[] = []): string {
+		return args.length
+			? message.replace(
+					/\{(\d+)\}/g,
+					(match, rest: any[]) => args[rest[0]] || match,
+				)
+			: message;
+	}
 
-	const languageFormat = 'package.nls{0}.json';
-	const defaultLanguage = languageFormat.replace('{0}', '');
+	private resolveLanguagePack(): ILanguagePack {
+		this.init();
 
-	const rootPath = join(__dirname, '../../..');
+		const languageFormat = "package.nls{0}.json";
+		const defaultLanguage = languageFormat.replace("{0}", "");
 
-	const resolvedLanguage = this.recurseCandidates(
-		rootPath,
-		languageFormat,
-		this.options.locale
-	);
+		const rootPath = join(__dirname, "../../..");
 
-	const languageFilePath = resolve(rootPath, resolvedLanguage);
-
-	try {
-		const defaultLanguageBundle = JSON.parse(
-		resolvedLanguage !== defaultLanguage
-			? readFileSync(resolve(rootPath, defaultLanguage), 'utf-8')
-			: '{}'
+		const resolvedLanguage = this.recurseCandidates(
+			rootPath,
+			languageFormat,
+			this.options.locale,
 		);
 
-		const resolvedLanguageBundle = JSON.parse(
-		readFileSync(languageFilePath, 'utf-8')
-		);
+		const languageFilePath = resolve(rootPath, resolvedLanguage);
 
-		return { ...defaultLanguageBundle, ...resolvedLanguageBundle };
-	} catch (err) {
-		throw err;
-	}
-  }
+		try {
+			const defaultLanguageBundle = JSON.parse(
+				resolvedLanguage !== defaultLanguage
+					? readFileSync(resolve(rootPath, defaultLanguage), "utf-8")
+					: "{}",
+			);
 
-  private recurseCandidates(
-	rootPath: string,
-	format: string,
-	candidate: string
-  ): string {
-	const filename = format.replace('{0}', `.${candidate}`);
-	const filepath = resolve(rootPath, filename);
-	if (existsSync(filepath)) {
-		return filename;
+			const resolvedLanguageBundle = JSON.parse(
+				readFileSync(languageFilePath, "utf-8"),
+			);
+
+			return { ...defaultLanguageBundle, ...resolvedLanguageBundle };
+		} catch (err) {
+			throw err;
+		}
 	}
-	if (candidate.split('-')[0] !== candidate) {
-		return this.recurseCandidates(rootPath, format, candidate.split('-')[0]);
+
+	private recurseCandidates(
+		rootPath: string,
+		format: string,
+		candidate: string,
+	): string {
+		const filename = format.replace("{0}", `.${candidate}`);
+		const filepath = resolve(rootPath, filename);
+		if (existsSync(filepath)) {
+			return filename;
+		}
+		if (candidate.split("-")[0] !== candidate) {
+			return this.recurseCandidates(
+				rootPath,
+				format,
+				candidate.split("-")[0],
+			);
+		}
+		return format.replace("{0}", "");
 	}
-	return format.replace('{0}', '');
-  }
 }
 
 export default Localize.prototype.localize.bind(new Localize());
