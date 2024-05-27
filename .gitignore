@@ -1,6 +1,7 @@
 # User-specific files
 coverage
 engine
+node_modules
 out
 **/test-data/templates
 **/test-data/result
@@ -11,5 +12,6 @@ out
 *.userosscache
 *.sln.docstates
 *.log
+.DS_Store
 .nyc_output
 .vscode-test
