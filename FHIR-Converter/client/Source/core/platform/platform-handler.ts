@@ -3,21 +3,21 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as cp from "child_process";
-import * as os from "os";
-import * as path from "path";
-import * as engineConstants from "../common/constants/engine";
-import { TemplateManagementError } from "../common/errors/template-management-error";
-import * as osUtils from "../common/utils/os-utils";
-import { WindowsPlatformData } from "./Windows-platform-data";
-import { MacPlatformData } from "./mac-platform-data";
-import type { IPlatformData } from "./platform-data";
+import * as osUtils from '../common/utils/os-utils';
+import { WindowsPlatformData } from './Windows-platform-data';
+import { MacPlatformData } from './mac-platform-data';
+import { IPlatformData } from './platform-data';
+import * as cp from 'child_process';
+import * as engineConstants from '../common/constants/engine';
+import { TemplateManagementError } from '../common/errors/template-management-error';
+import * as path from 'path';
+import * as os from 'os';
 
 export class PlatformHandler {
 	private static _instance = new PlatformHandler();
 	private platformData: IPlatformData;
-	private supportedOS: Array<string> = ["win32", "darwin"];
-
+	private supportedOS: Array<string> = ['win32', 'darwin'];
+	
 	private constructor() {
 		if (osUtils.isWindows()) {
 			this.platformData = new WindowsPlatformData();
@@ -34,7 +34,7 @@ export class PlatformHandler {
 		return this.platformData;
 	}
 
-	isSupportedOS(): boolean {
+	isSupportedOS(): Boolean {
 		if (this.supportedOS.includes(os.platform())) {
 			return true;
 		}
@@ -45,10 +45,10 @@ export class PlatformHandler {
 		try {
 			if (osUtils.isMac()) {
 				const renameCmd = `mv ${engineConstants.DefaultEngineOrasName} ${this.platformData.orasExecCmd}`;
-				const tarCmd = `tar -zxvf ${engineConstants.DefaultEngineOrasPackageName}`;
+				const tarCmd =  `tar -zxvf ${engineConstants.DefaultEngineOrasPackageName}`;
 				const cmd = `${tarCmd}; ${renameCmd}`;
 				cp.execSync(cmd, {
-					cwd: engineConstants.DefaultEngineFolder,
+					cwd: engineConstants.DefaultEngineFolder
 				});
 			}
 		} catch (err) {

@@ -3,10 +3,10 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as fs from "fs";
-import * as path from "path";
-import * as glob from "glob";
-
+import * as fs from 'fs';
+import * as path from 'path';
+import * as glob from 'glob';
+		
 export function writeJsonToFile(filePath: string, msg: object) {
 	const flag = checkCreateFolders(path.dirname(filePath));
 	fs.writeFileSync(filePath, JSON.stringify(msg, null, 4));
@@ -23,9 +23,7 @@ export function checkCreateFolders(resultFolder: string) {
 
 export function getAllPaths(directory: string, pattern: string): string[] {
 	const searchPattern = directory + pattern;
-	const files: string[] = glob
-		.sync(searchPattern, {})
-		.map((uri) => uri.replace(/\\/g, "/"));
+	const files: string[] = glob.sync(searchPattern, {}).map(uri => uri.replace(/\\/g, '/'));
 	return files;
 }
 

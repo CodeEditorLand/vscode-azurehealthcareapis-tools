@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as path from "path";
+import * as path from 'path';
 
 export function getFileNameExt(filePath: string): string {
 	return path.extname(filePath);
@@ -13,22 +13,14 @@ export function convertPrettyJsonString(json: object) {
 	return JSON.stringify(json, null, 4);
 }
 
-export function generatePrettyFolderName(
-	templateFolder: string,
-	templateFolderSuffix: string,
-) {
-	return path.basename(templateFolder) + " " + templateFolderSuffix;
+export function generatePrettyFolderName(templateFolder: string, templateFolderSuffix: string) {
+	return path.basename(templateFolder) + ' ' + templateFolderSuffix;
 }
 
-export function getStatusBarString(
-	activeDataPath: string | undefined,
-	activeTemplatePath: string | undefined,
-	extensionTitle: string,
-	dataTitle: string,
-	templateTitle: string,
-) {
-	let dataName = "none";
-	let templateName = "none";
+export function getStatusBarString(activeDataPath: string | undefined, activeTemplatePath: string | undefined, 
+	extensionTitle: string, dataTitle: string, templateTitle: string) {
+	let dataName = 'none';
+	let templateName = 'none';
 	if (activeDataPath) {
 		dataName = path.basename(activeDataPath);
 	}
@@ -41,7 +33,7 @@ export function getStatusBarString(
 
 export function getFileNameWithoutExt(filePath: string): string {
 	const fileName = path.basename(filePath);
-	const lastIdx = fileName.lastIndexOf(".");
+	const lastIdx = fileName.lastIndexOf('.');
 	if (lastIdx > 0) {
 		return fileName.substring(0, lastIdx);
 	}
@@ -58,26 +50,17 @@ export function getTimestampFromFilename(filePath: string) {
 }
 
 export function addTimestampToFilename(filePath: string, timestamp: string) {
-	return `${getFileNameWithoutExt(filePath)}.${timestamp}${getFileNameExt(
-		filePath,
-	)}`;
+	return `${getFileNameWithoutExt(filePath)}.${timestamp}${getFileNameExt(filePath)}`;
 }
 
-export function getResultFileName(
-	dataPath: string,
-	templatePath: string,
-	timestamp: string,
-) {
+export function getResultFileName(dataPath: string, templatePath: string, timestamp: string) {
 	const dataName = getFileNameWithoutExt(dataPath);
 	const templateName = getFileNameWithoutExt(templatePath);
 	const resultName = `${dataName}+${templateName}.json`;
 	return addTimestampToFilename(resultName, timestamp);
 }
 
-export function getDiffResultFileName(
-	resultFilePath1: string,
-	resultFilePath2: string,
-) {
+export function getDiffResultFileName(resultFilePath1: string, resultFilePath2: string) {
 	const timestamp1 = getTimestampFromFilename(resultFilePath1);
 	const timestamp2 = getTimestampFromFilename(resultFilePath2);
 	const fileName = getFileNameWithoutTwoExt(resultFilePath1);
@@ -89,9 +72,7 @@ export function getDescendingSortString(list: string[]) {
 }
 
 export function getDigest(str: string) {
-	const result = str.match(
-		/[A-Za-z][A-Za-z0-9]*([+.-_][A-Za-z][A-Za-z0-9]*)*:[0-9a-fA-F]{32,}/,
-	);
+	const result = str.match(/[A-Za-z][A-Za-z0-9]*([+.-_][A-Za-z][A-Za-z0-9]*)*:[0-9a-fA-F]{32,}/);
 	if (!result) {
 		return undefined;
 	}
@@ -99,9 +80,9 @@ export function getDigest(str: string) {
 }
 
 export function addQuotes(path: string) {
-	if (path.startsWith('"') && path.endsWith('"')) {
-		return path;
-	} else {
+	if (! (path.startsWith("\"") && path.endsWith("\""))) {
 		return `"${path}"`;
+	 } else {
+		return path;
 	}
 }
