@@ -184,14 +184,14 @@
 	},
 	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
 	"devDependencies": {
-		"@types/glob": "^8.1.0",
-		"@types/node": "^20.14.2",
-		"chai": "^5.1.1",
-		"chai-as-promised": "^8.0.0",
-		"chai-subset": "^1.6.0",
-		"glob": "^10.4.1",
-		"nyc": "^17.0.0",
-		"reflect-metadata": "^0.2.2"
+		"@types/glob": "8.1.0",
+		"@types/node": "20.14.2",
+		"chai": "5.1.1",
+		"chai-as-promised": "8.0.0",
+		"chai-subset": "1.6.0",
+		"glob": "10.4.1",
+		"nyc": "17.0.0",
+		"reflect-metadata": "0.2.2"
 	},
 	"displayName": "FHIR Converter",
 	"enableProposedApi": true,
