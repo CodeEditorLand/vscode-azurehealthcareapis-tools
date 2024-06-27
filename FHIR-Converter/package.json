@@ -185,7 +185,7 @@
 	],
 	"devDependencies": {
 		"@types/glob": "8.1.0",
-		"@types/node": "20.14.8",
+		"@types/node": "20.14.9",
 		"chai": "5.1.1",
 		"chai-as-promised": "8.0.0",
 		"chai-subset": "1.6.0",
