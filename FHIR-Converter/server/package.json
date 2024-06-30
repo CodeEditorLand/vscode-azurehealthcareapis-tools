@@ -1,8 +1,8 @@
 {
-	"name": "vscode-health-fhir-converter-server",
-	"description": "Language server for FHIR Converter",
 	"dependencies": {
 		"@types/glob": "8.1.0",
 		"glob": "10.4.2"
-	}
+	},
+	"description": "Language server for FHIR Converter",
+	"name": "vscode-health-fhir-converter-server"
 }
