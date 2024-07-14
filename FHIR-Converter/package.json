@@ -1,11 +1,24 @@
 {
-	"name": "vscode-health-fhir-converter",
-	"displayName": "FHIR Converter",
-	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
-	"main": "./client/out/extension.js",
-	"scripts": {
-		"compile": "tsc -b",
-		"download-templates": "cd test-data && sh download-templates.sh"
+	"activationEvents": [
+		"onCommand:microsoft.health.fhir.converter.convert",
+		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
+		"onCommand:microsoft.health.fhir.converter.selectTemplate",
+		"onCommand:microsoft.health.fhir.converter.selectData",
+		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
+		"onCommand:microsoft.health.fhir.converter.pullTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullSampleData",
+		"onCommand:microsoft.health.fhir.converter.pushTemplates",
+		"onCommand:microsoft.health.fhir.converter.loginRegistry",
+		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
+		"workspaceContains:**/*.liquid"
+	],
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": false
 	},
 	"contributes": {
 		"commands": [
@@ -169,20 +182,7 @@
 			]
 		}
 	},
-	"activationEvents": [
-		"onCommand:microsoft.health.fhir.converter.convert",
-		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
-		"onCommand:microsoft.health.fhir.converter.selectTemplate",
-		"onCommand:microsoft.health.fhir.converter.selectData",
-		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
-		"onCommand:microsoft.health.fhir.converter.pullTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullSampleData",
-		"onCommand:microsoft.health.fhir.converter.pushTemplates",
-		"onCommand:microsoft.health.fhir.converter.loginRegistry",
-		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
-		"workspaceContains:**/*.liquid"
-	],
+	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/node": "^14.11.2",
@@ -193,18 +193,18 @@
 		"nyc": "^15.1.0",
 		"reflect-metadata": "^0.1.13"
 	},
-	"icon": "assets/icon.png",
+	"displayName": "FHIR Converter",
+	"enableProposedApi": true,
 	"galleryBanner": {
 		"color": "#3c3c3c",
 		"theme": "dark"
 	},
+	"icon": "assets/icon.png",
+	"main": "./client/out/extension.js",
+	"name": "vscode-health-fhir-converter",
 	"preview": true,
-	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-	"capabilities": {
-		"untrustedWorkspaces": {
-			"supported": true
-		},
-		"virtualWorkspaces": false
-	},
-	"enableProposedApi": true
+	"scripts": {
+		"compile": "tsc -b",
+		"download-templates": "cd test-data && sh download-templates.sh"
+	}
 }
