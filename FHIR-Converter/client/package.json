@@ -1,22 +1,10 @@
 {
-	"name": "vscode-health-fhir-converter-client",
-	"publisher": "ms-azuretools",
-	"description": "Language client for FHIR Converter",
-	"version": "1.2.0",
-	"license": "MIT",
-	"preview": true,
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
-	},
-	"engines": {
-		"vscode": "^1.44.0"
-	},
 	"dependencies": {
 		"@types/glob": "^7.1.1",
 		"axios": "^0.21.2",
-		"glob": "^7.1.4",
-		"vscode-extension-telemetry": "^0.1.6",
-		"vscode-languageclient": "^6.1.1"
-	}
+		"glob": "^7.1.4"
+	},
+	"description": "Language client for FHIR Converter",
+	"name": "vscode-health-fhir-converter-client",
+	"preview": true
 }
