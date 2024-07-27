@@ -5,14 +5,9 @@
 		"outDir": "out",
 		"sourceMap": true,
 		"strict": true,
-		"rootDir": "src",
-	},	
-	"include": [
-		"src"
-	],
+		"rootDir": "src"
+	},
+	"include": ["src"],
 	"exclude": ["node_modules", ".vscode-test"],
-	"references": [
-		{ "path": "./client" },
-		{ "path": "./server" }
-	]
+	"references": [{ "path": "./client" }, { "path": "./server" }]
 }
