@@ -3,8 +3,9 @@
  * Licensed under the MIT License. See License in the project root for license information.
  */
 
-import * as vscode from 'vscode';
-import * as fileUtils from '../common/utils/file-utils';
+import * as vscode from "vscode";
+
+import * as fileUtils from "../common/utils/file-utils";
 
 export class SettingManager {
 	_context: vscode.ExtensionContext;
@@ -22,7 +23,7 @@ export class SettingManager {
 	public set context(context: vscode.ExtensionContext) {
 		this._context = context;
 	}
-	
+
 	public get workspaceSection() {
 		return this._workspaceSection;
 	}
@@ -33,28 +34,31 @@ export class SettingManager {
 
 	initWorkspaceConfiguration(workspacePath: string) {
 		const workspaceConfig = {
-			'folders': [],
-			'settings': {}
+			"folders": [],
+			"settings": {},
 		};
 		fileUtils.writeJsonToFile(workspacePath, workspaceConfig);
 		return workspaceConfig;
 	}
 
-	
 	getWorkspaceConfiguration(key: string) {
-		const value: string = vscode.workspace.getConfiguration(this.workspaceSection).get(key);
+		const value: string = vscode.workspace
+			.getConfiguration(this.workspaceSection)
+			.get(key);
 		if (!value) {
 			return undefined;
 		}
 		return value;
 	}
-	
+
 	updateWorkspaceConfiguration(key: string, value: string) {
-		return new Promise<void>(resolve => {
-			vscode.workspace.getConfiguration(this.workspaceSection).update(key, value, false)
-			.then(() => {
-				resolve();
-			});
+		return new Promise<void>((resolve) => {
+			vscode.workspace
+				.getConfiguration(this.workspaceSection)
+				.update(key, value, false)
+				.then(() => {
+					resolve();
+				});
 		});
 	}
 
@@ -67,9 +71,8 @@ export class SettingManager {
 	}
 
 	updateWorkspaceState(key: string, value: string) {
-		return new Promise<void>(resolve => {
-			this.context.workspaceState.update(key, value)
-			.then(() => {
+		return new Promise<void>((resolve) => {
+			this.context.workspaceState.update(key, value).then(() => {
 				resolve();
 			});
 		});
