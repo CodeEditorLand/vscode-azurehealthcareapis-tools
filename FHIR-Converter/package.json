@@ -185,7 +185,7 @@
 	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
 	"devDependencies": {
 		"@types/glob": "8.1.0",
-		"@types/node": "22.7.9",
+		"@types/node": "22.8.1",
 		"chai": "5.1.2",
 		"chai-as-promised": "8.0.0",
 		"chai-subset": "1.6.0",
