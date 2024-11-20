@@ -1,10 +1,10 @@
 {
-	"name": "vscode-health-fhir-converter-client",
-	"description": "Language client for FHIR Converter",
 	"dependencies": {
 		"@types/glob": "8.1.0",
 		"axios": "1.7.7",
 		"glob": "11.0.0"
 	},
+	"description": "Language client for FHIR Converter",
+	"name": "vscode-health-fhir-converter-client",
 	"preview": true
 }
