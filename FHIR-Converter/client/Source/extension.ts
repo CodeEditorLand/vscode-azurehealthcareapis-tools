@@ -56,6 +56,7 @@ export async function activate(context: vscode.ExtensionContext) {
 			globals.settingManager.getWorkspaceConfiguration(
 				configurationConstants.ResultFolderKey,
 			);
+
 		if (!resultFolder) {
 			resultFolder = path.join(
 				globals.settingManager.context.storagePath,
@@ -165,12 +166,15 @@ function updateTemplateFolderToWorkspaceFolder() {
 		globals.settingManager.getWorkspaceConfiguration(
 			configurationConstants.TemplateFolderKey,
 		);
+
 	if (templateFolder) {
 		const folders = vscode.workspace.workspaceFolders;
+
 		const folderName = stringUtils.generatePrettyFolderName(
 			templateFolder,
 			localize("common.templateFolder.suffix"),
 		);
+
 		if (!folders) {
 			vscode.workspace.updateWorkspaceFolders(0, null, {
 				uri: vscode.Uri.file(templateFolder),

@@ -22,16 +22,20 @@ export class Converter {
 	async convert(dataFile: string) {
 		const result = this._engine.process(dataFile);
 		await this.clearHistory(result.resultFile);
+
 		return result;
 	}
 
 	getHistory(filePath: string) {
 		const resultName = stringUtils.getFileNameWithoutTwoExt(filePath);
+
 		const files: string[] = fileUtils.getAllPaths(
 			this._resultFolder,
 			`/**/${resultName}.*.json`,
 		);
+
 		const sortedFiles = stringUtils.getDescendingSortString(files);
+
 		return sortedFiles;
 	}
 
@@ -41,9 +45,12 @@ export class Converter {
 		remainNum = engineConstants.RemainHistoryFilesNum,
 	) {
 		const files = this.getHistory(filePath);
+
 		if (files.length > maxNum) {
 			const deleteFiles = files.slice(remainNum, files.length);
+
 			const promiseAll = [];
+
 			for (const file of deleteFiles) {
 				promiseAll.push(
 					new Promise<void>((resolve, reject) => {

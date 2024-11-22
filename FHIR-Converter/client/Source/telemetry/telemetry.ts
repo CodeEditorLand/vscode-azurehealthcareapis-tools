@@ -11,6 +11,7 @@ export let reporter: TelemetryReporter;
 export class Reporter extends vscode.Disposable {
 	constructor(ctx: vscode.ExtensionContext) {
 		super(() => reporter.dispose());
+
 		const packageInfo = getPackageInfo(ctx);
 		reporter =
 			packageInfo &&
@@ -30,6 +31,7 @@ interface IPackageInfo {
 
 function getPackageInfo(context: vscode.ExtensionContext): IPackageInfo {
 	const extensionPackage = require(context.asAbsolutePath("./package.json"));
+
 	if (extensionPackage) {
 		return {
 			name: extensionPackage.name,

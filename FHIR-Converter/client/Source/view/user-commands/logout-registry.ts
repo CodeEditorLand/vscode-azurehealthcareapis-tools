@@ -16,6 +16,7 @@ export async function logoutRegistryCommand() {
 		localize("message.inputYourRegistry"),
 		workspaceStateConstants.RegistryKey,
 	);
+
 	if (!registryName) {
 		return undefined;
 	}

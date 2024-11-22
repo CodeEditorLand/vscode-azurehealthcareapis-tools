@@ -27,6 +27,7 @@ export async function convertCommand() {
 		// Check whether there is any template not saved and ask if users want to save it
 		const unsavedTemplates: vscode.TextDocument[] =
 			interaction.getUnsavedFiles(engineConstants.TemplateFileExt);
+
 		if (unsavedTemplates.length > 0) {
 			await interaction.askSaveFiles(
 				unsavedTemplates,
@@ -43,6 +44,7 @@ export async function convertCommand() {
 
 		// Check whether data file is dirty and not saved and ask if users want to save it
 		const doc = interaction.isDirtyFile(dataFile);
+
 		if (doc) {
 			await interaction.askSaveFiles(
 				[doc],
@@ -64,6 +66,7 @@ export async function convertCommand() {
 			globals.settingManager.getWorkspaceConfiguration(
 				configurationConstants.enableUnusedSegmentsDiagnosticKey,
 			);
+
 		if (enableUnusedSegmentsDiagnostic) {
 			const traceInfo = result.traceInfo;
 			unusedSegmentsDiagnostic.updateDiagnostics(
@@ -91,11 +94,13 @@ export async function convertCommand() {
 		const enableDiff = globals.settingManager.getWorkspaceConfiguration(
 			configurationConstants.enableDiffViewKey,
 		);
+
 		if (!enableDiff) {
 			await showResultEditor(vscode.Uri.file(result.resultFile));
 		} else {
 			// Get the history
 			const history = converter.getHistory(result.resultFile);
+
 			if (history.length === 1) {
 				// Show result in the editor
 				await showResultEditor(vscode.Uri.file(history[0]));

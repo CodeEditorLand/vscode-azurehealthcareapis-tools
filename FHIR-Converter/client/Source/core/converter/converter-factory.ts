@@ -27,6 +27,7 @@ export class ConverterEngineFactory {
 		const resultFolder = globals.settingManager.getWorkspaceConfiguration(
 			configurationConstants.ResultFolderKey,
 		);
+
 		if (!resultFolder) {
 			throw new ConfigurationError(
 				localize("message.noResultFolderProvided"),
@@ -45,6 +46,7 @@ export class ConverterEngineFactory {
 			globals.settingManager.getWorkspaceConfiguration(
 				configurationConstants.TemplateFolderKey,
 			);
+
 		if (!templateFolder) {
 			throw new ConfigurationError(
 				localize("message.noTemplateFolderProvided"),
@@ -62,6 +64,7 @@ export class ConverterEngineFactory {
 		const rootTemplate = globals.settingManager.getWorkspaceState(
 			stateConstants.TemplateKey,
 		);
+
 		if (!rootTemplate) {
 			throw new ConversionError(localize("message.needSelectTemplate"));
 		}

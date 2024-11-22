@@ -72,6 +72,7 @@ export class SettingsManager {
 			return Promise.resolve(this.globalSettings);
 		}
 		let result = this.documentSettings.get(resource);
+
 		if (!result) {
 			result = this.connection.workspace.getConfiguration({
 				scopeUri: resource,

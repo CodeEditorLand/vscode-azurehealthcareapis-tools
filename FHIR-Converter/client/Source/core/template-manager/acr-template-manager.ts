@@ -31,6 +31,7 @@ export class AcrTemplateManager implements ITemplateManager {
 			engineConstants.DefaultEngineFolder,
 			this._orasExecCmd,
 		);
+
 		return `${orasExecCmd} login ${registryName}`;
 	}
 
@@ -40,9 +41,12 @@ export class AcrTemplateManager implements ITemplateManager {
 				engineConstants.DefaultEngineFolder,
 				this._orasExecCmd,
 			);
+
 			const paramList = [" logout", registryName];
+
 			const cmd = orasExecCmd + paramList.join(" ");
 			cp.execSync(cmd);
+
 			return "Logout succeeded.";
 		} catch (err) {
 			// On MAC system, if an application is not trusted, it will be killed.
@@ -66,13 +70,16 @@ export class AcrTemplateManager implements ITemplateManager {
 				stringUtils.addQuotes(imageReference),
 				stringUtils.addQuotes(outputFolder),
 			];
+
 			if (force) {
 				paramList.push("-f");
 			}
 			const cmd = this._engineExecCmd + paramList.join(" ");
+
 			const output = cp.execSync(cmd, {
 				cwd: engineConstants.DefaultEngineFolder,
 			});
+
 			return output.toString();
 		} catch (err) {
 			throw new TemplateManagementError(err.stderr.toString());
@@ -86,10 +93,13 @@ export class AcrTemplateManager implements ITemplateManager {
 				stringUtils.addQuotes(imageReference),
 				stringUtils.addQuotes(inputFolder),
 			];
+
 			const cmd = this._engineExecCmd + paramList.join(" ");
+
 			const output = cp.execSync(cmd, {
 				cwd: engineConstants.DefaultEngineFolder,
 			});
+
 			return output.toString();
 		} catch (err) {
 			throw new TemplateManagementError(err.stderr.toString());

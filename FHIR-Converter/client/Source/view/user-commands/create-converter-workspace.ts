@@ -15,13 +15,16 @@ import * as interaction from "../common/file-dialog/file-dialog-interaction";
 
 export async function createConverterWorkspaceCommand() {
 	let templateFolder: vscode.Uri;
+
 	let dataFolder: vscode.Uri;
+
 	let workspacePath: vscode.Uri;
 
 	// Select root template folder
 	templateFolder = await interaction.openDialogSelectFolder(
 		localize("message.selectRootTemplateFolder"),
 	);
+
 	if (!templateFolder) {
 		return undefined;
 	}
@@ -34,6 +37,7 @@ export async function createConverterWorkspaceCommand() {
 		localize("message.selectDataFolder"),
 		parentFolder,
 	);
+
 	if (!dataFolder) {
 		return undefined;
 	}
@@ -47,6 +51,7 @@ export async function createConverterWorkspaceCommand() {
 		configurationConstants.WorkspaceFileExtension,
 		defaultWorkspaceUri,
 	);
+
 	if (!workspacePath) {
 		return undefined;
 	}
@@ -76,11 +81,14 @@ function getDefaultConverterWorkspaceConfig(
 		templateFolder,
 		localize("common.templateFolder.suffix"),
 	);
+
 	const folders: any[] = [];
+
 	const settings = {
 		"workbench.editor.enablePreview": false,
 		"diffEditor.renderSideBySide": false,
 	};
+
 	if (!templateFolder) {
 		folders.push({});
 	} else if (templateFolder) {
@@ -88,6 +96,7 @@ function getDefaultConverterWorkspaceConfig(
 			"name": folderName,
 			"path": templateFolder,
 		});
+
 		settings[
 			`${configurationConstants.ConfigurationSection}.${configurationConstants.TemplateFolderKey}`
 		] = templateFolder;

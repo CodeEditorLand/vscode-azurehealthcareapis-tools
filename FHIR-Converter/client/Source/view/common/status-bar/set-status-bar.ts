@@ -15,6 +15,7 @@ export function setStatusBar() {
 	const activeDataPath = globals.settingManager.getWorkspaceState(
 		stateConstants.DataKey,
 	);
+
 	const activeTemplatePath = globals.settingManager.getWorkspaceState(
 		stateConstants.TemplateKey,
 	);

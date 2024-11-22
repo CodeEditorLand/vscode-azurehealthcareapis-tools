@@ -38,6 +38,7 @@ export class SettingManager {
 			"settings": {},
 		};
 		fileUtils.writeJsonToFile(workspacePath, workspaceConfig);
+
 		return workspaceConfig;
 	}
 
@@ -45,6 +46,7 @@ export class SettingManager {
 		const value: string = vscode.workspace
 			.getConfiguration(this.workspaceSection)
 			.get(key);
+
 		if (!value) {
 			return undefined;
 		}
@@ -64,6 +66,7 @@ export class SettingManager {
 
 	getWorkspaceState(key: string) {
 		const value: string = this.context.workspaceState.get(key);
+
 		if (!value) {
 			return undefined;
 		}

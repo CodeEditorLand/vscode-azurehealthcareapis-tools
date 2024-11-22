@@ -5,8 +5,11 @@
 import { TemplateType } from "../enum/template-type";
 
 const OfficialLoginServer = "healthplatformregistry.azurecr.io";
+
 const Hl7v2TemplatesImage = "hl7v2defaulttemplates";
+
 const CcdaTemplatesImage = "ccdadefaulttemplates";
+
 const JsonTemplatesImage = "jsondefaulttemplates";
 
 export const OfficialRepoTokenUrl = `https://${OfficialLoginServer}/oauth2/token?scope=repository:*:*&service=${OfficialLoginServer}`;

@@ -46,7 +46,9 @@ export class PlatformHandler {
 		try {
 			if (osUtils.isMac()) {
 				const renameCmd = `mv ${engineConstants.DefaultEngineOrasName} ${this.platformData.orasExecCmd}`;
+
 				const tarCmd = `tar -zxvf ${engineConstants.DefaultEngineOrasPackageName}`;
+
 				const cmd = `${tarCmd}; ${renameCmd}`;
 				cp.execSync(cmd, {
 					cwd: engineConstants.DefaultEngineFolder,

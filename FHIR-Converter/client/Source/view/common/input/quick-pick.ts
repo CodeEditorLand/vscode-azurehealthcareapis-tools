@@ -11,5 +11,6 @@ export async function showQuickPick(placeHolder: string, itemList: string[]) {
 		canPickMany: false,
 		ignoreFocusOut: true,
 	};
+
 	return await vscode.window.showQuickPick(itemList, inputOption);
 }

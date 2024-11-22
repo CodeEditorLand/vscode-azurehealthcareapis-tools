@@ -58,6 +58,7 @@ connection.onInitialize((params: InitializeParams) => {
 			definitionProvider: true,
 		},
 	};
+
 	if (hasWorkspaceFolderCapability) {
 		result.capabilities.workspace = {
 			workspaceFolders: {
@@ -77,15 +78,20 @@ documents.onDidChangeContent(async (change) => {
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	// The validator creates diagnostics for all uppercase words length 2 and more
 	const text = textDocument.getText();
+
 	const pattern = /(\{\%\s*include\s*\')([^\']*)/g;
+
 	let m: RegExpExecArray | null;
 
 	const templateFolder = await getTemplateFolder(textDocument.uri);
+
 	const templates = utils.getAllTemplatePaths(templateFolder);
 
 	const diagnostics: Diagnostic[] = [];
+
 	while ((m = pattern.exec(text))) {
 		const partialTemplate = utils.addUnderlineExt(m[2]);
+
 		if (!templates.some((uri) => uri === partialTemplate)) {
 			const diagnostic: Diagnostic = {
 				severity: DiagnosticSeverity.Error,
@@ -119,11 +125,16 @@ connection.onCompletion(
 		const templates = utils.getAllTemplatePaths(
 			await getTemplateFolder(_textDocumentPosition.textDocument.uri),
 		);
+
 		const allPartialTemplates = [];
+
 		let index = 0;
+
 		for (let templatePath of templates) {
 			const dirname = path.dirname(templatePath);
+
 			const basename = path.basename(templatePath);
+
 			if (
 				basename === undefined ||
 				(dirname !== "." && basename[0] !== "_")
@@ -150,17 +161,22 @@ connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
 connection.onDefinition(
 	async (params: DefinitionParams): Promise<DefinitionLink[]> => {
 		const contextString = getSuroundingText(params);
+
 		if (contextString === "") {
 			return [];
 		}
 
 		const pattern = /\'(.*)\'/g;
+
 		let match: RegExpExecArray | null;
+
 		if ((match = pattern.exec(contextString)) !== null) {
 			const relativeFilePath = utils.addUnderlineExt(match[1]);
+
 			const templateFolder = await getTemplateFolder(
 				params.textDocument.uri,
 			);
+
 			if (
 				utils
 					.getAllTemplatePaths(templateFolder)
@@ -170,6 +186,7 @@ connection.onDefinition(
 					templateFolder,
 					relativeFilePath,
 				);
+
 				const firstChar = {
 					start: {
 						line: 0,
@@ -180,6 +197,7 @@ connection.onDefinition(
 						character: 0,
 					},
 				};
+
 				return [
 					{
 						targetUri: fileUri,
@@ -198,6 +216,7 @@ function getSuroundingText(location: TextDocumentPositionParams): string {
 		line: location.position.line,
 		character: 0,
 	};
+
 	const end = {
 		line: location.position.line + 1,
 		character: 0,
@@ -207,16 +226,19 @@ function getSuroundingText(location: TextDocumentPositionParams): string {
 		.get(location.textDocument.uri)
 		?.getText({ start, end })
 		.trimRight();
+
 	if (!targetLine) {
 		return "";
 	}
 
 	let endIndex = targetLine.indexOf(" ", location.position.character);
+
 	if (endIndex === -1) {
 		endIndex = targetLine.length;
 	}
 
 	let startIndex = targetLine.lastIndexOf(" ", location.position.character);
+
 	if (startIndex === -1) {
 		startIndex = 0;
 	}
@@ -228,6 +250,7 @@ export async function getTemplateFolder(uri: string): Promise<string> {
 	const templateFolder = path.normalize(
 		(await settingsManager.getDocumentSettings(uri)).templateFolder,
 	);
+
 	return templateFolder;
 }
 

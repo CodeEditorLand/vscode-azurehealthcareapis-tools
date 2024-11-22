@@ -29,6 +29,7 @@ export async function pushTemplatesCommand() {
 			localize("message.inputPushImageReference"),
 			workspaceStateConstants.ImageReferenceKey,
 		);
+
 		if (!imageReference) {
 			return undefined;
 		}
@@ -43,6 +44,7 @@ export async function pushTemplatesCommand() {
 			localize("message.selectRootTemplateFolder"),
 			templateFolder,
 		);
+
 		if (!selectedTemplateFolder) {
 			return undefined;
 		}
@@ -61,12 +63,14 @@ export async function pushTemplatesCommand() {
 		const refinedOutput = output
 			.replace(/\n/g, "; ")
 			.replace(/Uploading/g, "Uploaded");
+
 		const buttonLabel = localize("message.copyDigestToClipboard");
 		vscode.window
 			.showInformationMessage(refinedOutput, buttonLabel)
 			.then((selected) => {
 				if (selected === buttonLabel) {
 					const digest = strUtils.getDigest(output);
+
 					if (!digest) {
 						vscode.window.showWarningMessage(
 							localize("message.digestNotFound"),

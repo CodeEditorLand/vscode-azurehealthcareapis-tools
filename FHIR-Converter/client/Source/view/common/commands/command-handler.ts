@@ -41,6 +41,7 @@ export async function commandHandler(event) {
 		// Execute the command
 		const startTime = new Date().getTime();
 		await this(event);
+
 		const costTime = new Date().getTime() - startTime;
 
 		// Telemetry for commands

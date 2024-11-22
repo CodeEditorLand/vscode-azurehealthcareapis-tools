@@ -22,7 +22,9 @@ export function updateDiagnostics(
 	unusedSegments: object[],
 ): void {
 	const diagnostics: vscode.Diagnostic[] = [];
+
 	const components = getComponentsList(unusedSegments);
+
 	for (let i = 0; i < components.length; i++) {
 		diagnostics.push(createWarningDiagnostic(components[i]));
 	}
@@ -33,17 +35,23 @@ export function getComponentsList(
 	unusedSegments: object[],
 ): IDiagnosticComponent[] {
 	const result: IDiagnosticComponent[] = [];
+
 	if (!unusedSegments) {
 		return result;
 	}
 	for (let i = 0; i < unusedSegments.length; i++) {
 		const line = unusedSegments[i]["Line"];
+
 		const components = unusedSegments[i]["Components"];
+
 		if (line !== undefined && components !== undefined) {
 			for (let j = 0; j < components.length; j++) {
 				const start = components[j]["Start"];
+
 				const end = components[j]["End"];
+
 				const value = components[j]["Value"];
+
 				if (
 					start !== undefined &&
 					end !== undefined &&
@@ -66,6 +74,7 @@ export function createWarningDiagnostic(
 		localize("message.unusedSegment", component.value),
 		vscode.DiagnosticSeverity.Warning,
 	);
+
 	return diagnostic;
 }
 

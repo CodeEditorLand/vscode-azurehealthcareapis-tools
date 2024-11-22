@@ -15,6 +15,7 @@ export async function updateTemplateFolderCommand() {
 	const templateFolder: vscode.Uri = await interaction.openDialogSelectFolder(
 		localize("message.selectRootTemplateFolder"),
 	);
+
 	if (!templateFolder) {
 		return undefined;
 	}

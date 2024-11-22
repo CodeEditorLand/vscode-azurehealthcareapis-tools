@@ -15,6 +15,7 @@ import * as interaction from "../../common/file-dialog/file-dialog-interaction";
 
 export async function handle(error: Error): Promise<void> {
 	let errorType = "error.unexpected";
+
 	if (
 		error instanceof ConfigurationError ||
 		error instanceof ConversionError ||

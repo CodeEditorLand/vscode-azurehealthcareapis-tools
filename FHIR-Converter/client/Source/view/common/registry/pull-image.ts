@@ -25,6 +25,7 @@ export async function pullImage(imageReference, text) {
 	try {
 		// Get the workspace folder to set the default folder in dialog
 		let workspaceFolder = undefined;
+
 		if (vscode.workspace.workspaceFile) {
 			workspaceFolder = path.dirname(
 				vscode.workspace.workspaceFile.fsPath,
@@ -36,18 +37,21 @@ export async function pullImage(imageReference, text) {
 			localize("message.selectOutputFolder"),
 			workspaceFolder,
 		);
+
 		if (!outputFolder) {
 			return undefined;
 		}
 
 		// Check if the directory is empty
 		let force = false;
+
 		if (!(await fileUtils.isEmptyDir(outputFolder.fsPath))) {
 			const select = await vscode.window.showWarningMessage(
 				localize("message.nonEmptyFolderForcePushOrNot"),
 				localize("message.force"),
 				localize("message.cancel"),
 			);
+
 			if (select === localize("message.force")) {
 				force = true;
 			} else {

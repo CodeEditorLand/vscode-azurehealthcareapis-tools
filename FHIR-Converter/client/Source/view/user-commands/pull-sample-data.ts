@@ -15,6 +15,7 @@ export async function pullSampleDataCommand() {
 		localize("message.selectSampleDataType"),
 		Object.values(TemplateType),
 	);
+
 	let imageReference;
 	imageReference = constants.SampleDataImageReferences[selectedType];
 

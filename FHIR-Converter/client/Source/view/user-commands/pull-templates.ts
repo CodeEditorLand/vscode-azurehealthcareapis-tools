@@ -14,6 +14,7 @@ export async function pullTemplatesCommand() {
 		localize("message.inputPullImageReference"),
 		workspaceStateConstants.ImageReferenceKey,
 	);
+
 	if (!imageReference) {
 		return undefined;
 	}

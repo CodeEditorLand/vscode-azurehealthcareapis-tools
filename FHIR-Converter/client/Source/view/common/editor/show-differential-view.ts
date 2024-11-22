@@ -16,6 +16,7 @@ export async function showDifferentialView(
 		resultFilePath1.fsPath,
 		resultFilePath2.fsPath,
 	);
+
 	return await vscode.commands.executeCommand(
 		"vscode.diff",
 		resultFilePath1,

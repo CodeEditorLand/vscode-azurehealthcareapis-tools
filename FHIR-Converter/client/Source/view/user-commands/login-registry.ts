@@ -16,6 +16,7 @@ export async function loginRegistryCommand() {
 		localize("message.inputYourRegistry"),
 		workspaceStateConstants.RegistryKey,
 	);
+
 	if (!registryName) {
 		return undefined;
 	}
@@ -26,6 +27,7 @@ export async function loginRegistryCommand() {
 
 	// Execute the login process
 	const cmd = templateManager.login(registryName);
+
 	const terminal = vscode.window.createTerminal({
 		name: "FHIR Converter",
 		hideFromUser: false,

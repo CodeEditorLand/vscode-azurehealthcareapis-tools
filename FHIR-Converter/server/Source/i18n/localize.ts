@@ -14,6 +14,7 @@ export class Localize {
 
 	public localize(key: string, ...args: string[]): string {
 		const message = this.bundle[key] || key;
+
 		return this.format(message, args);
 	}
 
@@ -41,6 +42,7 @@ export class Localize {
 		this.init();
 
 		const languageFormat = "package.nls{0}.json";
+
 		const defaultLanguage = languageFormat.replace("{0}", "");
 
 		const rootPath = join(__dirname, "../../..");
@@ -76,7 +78,9 @@ export class Localize {
 		candidate: string,
 	): string {
 		const filename = format.replace("{0}", `.${candidate}`);
+
 		const filepath = resolve(rootPath, filename);
+
 		if (existsSync(filepath)) {
 			return filename;
 		}

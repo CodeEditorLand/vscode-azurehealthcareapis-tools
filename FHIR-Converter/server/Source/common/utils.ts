@@ -10,15 +10,18 @@ import * as constants from "../common/constants";
 
 export function addUnderlineExt(filePath: string) {
 	const dirname = path.dirname(filePath);
+
 	const filenameWithExt = path.join(
 		path.basename(filePath) + constants.EngineTemplateFileExt,
 	);
+
 	if (dirname === ".") {
 		filePath = filenameWithExt;
 	} else {
 		filePath = path.join(dirname, "_" + filenameWithExt);
 	}
 	filePath = filePath.replace(/\\/g, "/");
+
 	return filePath;
 }
 
@@ -41,9 +44,11 @@ export function getSnippetTemplateName(
 
 export function getAllTemplatePaths(directory: string): string[] {
 	const searchPattern = directory + `/**/*${constants.EngineTemplateFileExt}`;
+
 	const files: string[] = glob
 		.sync(searchPattern, {})
 		.map((uri) => path.relative(directory, uri).replace(/\\/g, "/"));
+
 	return files;
 }
 
@@ -55,5 +60,6 @@ export function getFileUriPrefix(path: string) {
 
 export function getFileUri(folder: string, file: string) {
 	const prefix = getFileUriPrefix(folder);
+
 	return `${prefix}${folder}/${file}`;
 }

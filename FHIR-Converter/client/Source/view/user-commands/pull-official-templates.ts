@@ -13,6 +13,7 @@ import { pullImage } from "../common/registry/pull-image";
 export async function pullOfficialTemplatesCommand() {
 	// Get all template version tags on the ACR
 	const tokenUrl = constants.OfficialRepoTokenUrl;
+
 	const token = await getToken(tokenUrl);
 
 	// Get the template type
@@ -20,6 +21,7 @@ export async function pullOfficialTemplatesCommand() {
 		localize("message.selectTemplateType"),
 		Object.values(TemplateType),
 	);
+
 	let tagsUrl, templateImageBaseReference;
 	tagsUrl = constants.ImageTagsUrls[selectedTemplateType];
 	templateImageBaseReference =
@@ -32,6 +34,7 @@ export async function pullOfficialTemplatesCommand() {
 			localize("message.selectTemplateVesion"),
 			tags,
 		);
+
 		if (selectedVersion) {
 			// If user selected a version, pull the image with this verison
 			const imageReference = `${templateImageBaseReference}:${selectedVersion}`;

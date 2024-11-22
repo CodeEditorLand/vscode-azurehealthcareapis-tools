@@ -10,6 +10,7 @@ import { TemplateManagementError } from "../common/errors/template-management-er
 export async function getRequest(url: string, params: object = {}) {
 	try {
 		const response = await axios.get(url, params);
+
 		return response;
 	} catch (error) {
 		throw new TemplateManagementError(error);
@@ -18,6 +19,7 @@ export async function getRequest(url: string, params: object = {}) {
 
 export async function getToken(url: string) {
 	const response = await getRequest(url);
+
 	return response.data.access_token;
 }
 
@@ -27,8 +29,11 @@ export async function getAcrTags(url: string, token: string) {
 			Authorization: `Bearer ${token}`,
 		},
 	};
+
 	const response = await getRequest(url, params);
+
 	const tags = response.data.tags;
+
 	if (!tags) {
 		return [];
 	}
