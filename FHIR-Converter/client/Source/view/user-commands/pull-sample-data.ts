@@ -17,6 +17,7 @@ export async function pullSampleDataCommand() {
 	);
 
 	let imageReference;
+
 	imageReference = constants.SampleDataImageReferences[selectedType];
 
 	// Pull image

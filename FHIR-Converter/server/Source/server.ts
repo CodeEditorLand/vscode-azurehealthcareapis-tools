@@ -66,6 +66,7 @@ connection.onInitialize((params: InitializeParams) => {
 			},
 		};
 	}
+
 	return result;
 });
 
@@ -141,14 +142,18 @@ connection.onCompletion(
 			) {
 				continue;
 			}
+
 			templatePath = utils.getSnippetTemplateName(dirname, basename);
+
 			allPartialTemplates.push({
 				label: templatePath,
 				kind: CompletionItemKind.Text,
 				data: index,
 			});
+
 			index++;
 		}
+
 		return allPartialTemplates;
 	},
 );
@@ -207,6 +212,7 @@ connection.onDefinition(
 				];
 			}
 		}
+
 		return [];
 	},
 );

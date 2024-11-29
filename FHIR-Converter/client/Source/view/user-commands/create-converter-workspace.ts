@@ -107,6 +107,7 @@ function getDefaultConverterWorkspaceConfig(
 			});
 		}
 	}
+
 	return {
 		"folders": folders,
 		"settings": settings,

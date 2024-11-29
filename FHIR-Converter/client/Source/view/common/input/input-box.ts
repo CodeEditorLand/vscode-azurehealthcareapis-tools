@@ -15,6 +15,7 @@ export async function showInputBox(placeHolder: string, workspaceKey: string) {
 	if (input) {
 		inputBoxOption["value"] = input;
 	}
+
 	input = await vscode.window.showInputBox(inputBoxOption);
 
 	if (input) {
@@ -22,5 +23,6 @@ export async function showInputBox(placeHolder: string, workspaceKey: string) {
 
 		return input;
 	}
+
 	return undefined;
 }

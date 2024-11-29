@@ -14,6 +14,7 @@ export const diagnosticsCollection =
 
 interface IDiagnosticComponent {
 	range: vscode.Range;
+
 	value: string;
 }
 
@@ -28,6 +29,7 @@ export function updateDiagnostics(
 	for (let i = 0; i < components.length; i++) {
 		diagnostics.push(createWarningDiagnostic(components[i]));
 	}
+
 	diagnosticsCollection.set(uri, diagnostics);
 }
 
@@ -39,6 +41,7 @@ export function getComponentsList(
 	if (!unusedSegments) {
 		return result;
 	}
+
 	for (let i = 0; i < unusedSegments.length; i++) {
 		const line = unusedSegments[i]["Line"];
 
@@ -58,11 +61,13 @@ export function getComponentsList(
 					value !== undefined
 				) {
 					const range = new vscode.Range(line, start, line, end);
+
 					result.push({ range, value });
 				}
 			}
 		}
 	}
+
 	return result;
 }
 

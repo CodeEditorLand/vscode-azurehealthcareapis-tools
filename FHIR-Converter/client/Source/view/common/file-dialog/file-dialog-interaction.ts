@@ -25,6 +25,7 @@ export async function openDialogSelectFolder(
 	if (defaultUri) {
 		options["defaultUri"] = vscode.Uri.file(defaultUri);
 	}
+
 	const selectedFolder = await vscode.window.showOpenDialog(options);
 
 	if (!selectedFolder) {
@@ -44,6 +45,7 @@ export async function showDialogSaveWorkspace(
 	if (defaultUri) {
 		options["defaultUri"] = vscode.Uri.file(defaultUri);
 	}
+
 	const workspacePath = await vscode.window.showSaveDialog(options);
 
 	if (!workspacePath) {
@@ -85,7 +87,9 @@ export async function askCreateMetadata(
 				let metadata = { type: MetadataType[selectedTemplateType] };
 
 				const metadataPath = path.join(templateFolder, "metadata.json");
+
 				fileUtils.writeJsonToFile(metadataPath, metadata);
+
 				vscode.window.showInformationMessage(
 					localize("message.createdMetadata", templateFolder),
 				);
@@ -101,6 +105,7 @@ export function getUnsavedFiles(type: string) {
 			unsavedFiles.push(doc);
 		}
 	}
+
 	return unsavedFiles;
 }
 
@@ -116,5 +121,6 @@ export function isDirtyFile(filePath: string) {
 			}
 		}
 	}
+
 	return undefined;
 }

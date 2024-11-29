@@ -37,5 +37,6 @@ export async function getAcrTags(url: string, token: string) {
 	if (!tags) {
 		return [];
 	}
+
 	return tags.map((tag) => tag.name).reverse();
 }

@@ -10,6 +10,7 @@ import { ILanguagePack } from "./language-pack";
 
 export class Localize {
 	private bundle = this.resolveLanguagePack();
+
 	private options: { locale: string };
 
 	public localize(key: string, ...args: string[]): string {
@@ -84,6 +85,7 @@ export class Localize {
 		if (existsSync(filepath)) {
 			return filename;
 		}
+
 		if (candidate.split("-")[0] !== candidate) {
 			return this.recurseCandidates(
 				rootPath,
@@ -91,6 +93,7 @@ export class Localize {
 				candidate.split("-")[0],
 			);
 		}
+
 		return format.replace("{0}", "");
 	}
 }

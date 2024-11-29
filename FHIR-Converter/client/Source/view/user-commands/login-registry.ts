@@ -32,6 +32,8 @@ export async function loginRegistryCommand() {
 		name: "FHIR Converter",
 		hideFromUser: false,
 	});
+
 	terminal.sendText(cmd);
+
 	terminal.show();
 }

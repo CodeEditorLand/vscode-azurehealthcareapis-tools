@@ -20,7 +20,9 @@ export async function pushTemplatesCommand() {
 		vscode.StatusBarAlignment.Left,
 		0,
 	);
+
 	pushBar.text = "$(sync~spin) Pushing templates...";
+
 	pushBar.show();
 
 	try {
@@ -65,6 +67,7 @@ export async function pushTemplatesCommand() {
 			.replace(/Uploading/g, "Uploaded");
 
 		const buttonLabel = localize("message.copyDigestToClipboard");
+
 		vscode.window
 			.showInformationMessage(refinedOutput, buttonLabel)
 			.then((selected) => {
@@ -75,6 +78,7 @@ export async function pushTemplatesCommand() {
 						vscode.window.showWarningMessage(
 							localize("message.digestNotFound"),
 						);
+
 						vscode.env.clipboard.writeText(refinedOutput);
 					} else {
 						vscode.env.clipboard.writeText(digest);

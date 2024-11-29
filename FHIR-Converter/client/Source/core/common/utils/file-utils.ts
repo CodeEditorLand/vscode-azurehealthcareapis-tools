@@ -9,6 +9,7 @@ import * as glob from "glob";
 
 export function writeJsonToFile(filePath: string, msg: object) {
 	const flag = checkCreateFolders(path.dirname(filePath));
+
 	fs.writeFileSync(filePath, JSON.stringify(msg, null, 4));
 
 	return flag;
@@ -20,6 +21,7 @@ export function checkCreateFolders(resultFolder: string) {
 
 		return false;
 	}
+
 	return true;
 }
 
@@ -41,5 +43,6 @@ export async function isEmptyDir(dirname) {
 	if (!result.done) {
 		await dirIter.close();
 	}
+
 	return result.done;
 }

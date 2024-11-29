@@ -9,10 +9,12 @@ import * as fileUtils from "../common/utils/file-utils";
 
 export class SettingManager {
 	_context: vscode.ExtensionContext;
+
 	_workspaceSection: string;
 
 	constructor(context: vscode.ExtensionContext, workspaceSection: string) {
 		this._workspaceSection = workspaceSection;
+
 		this._context = context;
 	}
 
@@ -37,6 +39,7 @@ export class SettingManager {
 			"folders": [],
 			"settings": {},
 		};
+
 		fileUtils.writeJsonToFile(workspacePath, workspaceConfig);
 
 		return workspaceConfig;
@@ -50,6 +53,7 @@ export class SettingManager {
 		if (!value) {
 			return undefined;
 		}
+
 		return value;
 	}
 
@@ -70,6 +74,7 @@ export class SettingManager {
 		if (!value) {
 			return undefined;
 		}
+
 		return value;
 	}
 

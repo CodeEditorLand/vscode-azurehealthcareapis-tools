@@ -20,7 +20,9 @@ export async function convertCommand() {
 	// Add conversion bar
 	const conversionBar: vscode.StatusBarItem =
 		vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
+
 	conversionBar.text = "$(sync~spin) Converting...";
+
 	conversionBar.show();
 
 	try {
@@ -69,6 +71,7 @@ export async function convertCommand() {
 
 		if (enableUnusedSegmentsDiagnostic) {
 			const traceInfo = result.traceInfo;
+
 			unusedSegmentsDiagnostic.updateDiagnostics(
 				vscode.Uri.file(dataFile),
 				traceInfo["UnusedSegments"],
@@ -86,6 +89,7 @@ export async function convertCommand() {
 		const templateFile = globals.settingManager.getWorkspaceState(
 			stateConstants.TemplateKey,
 		);
+
 		await vscode.window.showTextDocument(vscode.Uri.file(templateFile), {
 			viewColumn: vscode.ViewColumn.Two,
 		});
@@ -112,6 +116,7 @@ export async function convertCommand() {
 				);
 			}
 		}
+
 		await vscode.commands.executeCommand(
 			"workbench.action.closeOtherEditors",
 		);

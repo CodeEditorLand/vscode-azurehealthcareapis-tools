@@ -19,7 +19,9 @@ export async function pullImage(imageReference, text) {
 		vscode.StatusBarAlignment.Left,
 		0,
 	);
+
 	pullBar.text = `$(sync~spin) ${text}...`;
+
 	pullBar.show();
 
 	try {
@@ -72,6 +74,7 @@ export async function pullImage(imageReference, text) {
 
 		// Show ouput message
 		const buttonLabel = localize("message.openFolder");
+
 		vscode.window
 			.showInformationMessage(output.replace(/\n/g, "; "), buttonLabel)
 			.then((selected) => {
@@ -79,6 +82,7 @@ export async function pullImage(imageReference, text) {
 					const openFolderCmd =
 						PlatformHandler.getInstance().getPlatformData()
 							.openFolderCmd;
+
 					cp.exec(`${openFolderCmd} "${outputFolder.fsPath}"`);
 				}
 			});

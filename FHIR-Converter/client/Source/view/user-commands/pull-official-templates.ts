@@ -23,7 +23,9 @@ export async function pullOfficialTemplatesCommand() {
 	);
 
 	let tagsUrl, templateImageBaseReference;
+
 	tagsUrl = constants.ImageTagsUrls[selectedTemplateType];
+
 	templateImageBaseReference =
 		constants.TemplateImageBaseReferences[selectedTemplateType];
 
@@ -38,6 +40,7 @@ export async function pullOfficialTemplatesCommand() {
 		if (selectedVersion) {
 			// If user selected a version, pull the image with this verison
 			const imageReference = `${templateImageBaseReference}:${selectedVersion}`;
+
 			await pullImage(
 				imageReference,
 				localize("message.pullingTemplates"),

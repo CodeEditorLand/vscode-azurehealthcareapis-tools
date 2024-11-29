@@ -20,6 +20,7 @@ export function addUnderlineExt(filePath: string) {
 	} else {
 		filePath = path.join(dirname, "_" + filenameWithExt);
 	}
+
 	filePath = filePath.replace(/\\/g, "/");
 
 	return filePath;
@@ -32,6 +33,7 @@ export function getSnippetTemplateName(
 	if (dirname !== "." && basename[0] === "_") {
 		basename = basename.substring(1, basename.length);
 	}
+
 	return (
 		"'" +
 		path

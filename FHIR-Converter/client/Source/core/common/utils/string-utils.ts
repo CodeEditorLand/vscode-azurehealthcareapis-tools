@@ -34,9 +34,11 @@ export function getStatusBarString(
 	if (activeDataPath) {
 		dataName = path.basename(activeDataPath);
 	}
+
 	if (activeTemplatePath) {
 		templateName = path.basename(activeTemplatePath);
 	}
+
 	const str = `${extensionTitle}: ${dataTitle} - ${dataName}, ${templateTitle} - ${templateName}`;
 
 	return str;
@@ -50,6 +52,7 @@ export function getFileNameWithoutExt(filePath: string): string {
 	if (lastIdx > 0) {
 		return fileName.substring(0, lastIdx);
 	}
+
 	return fileName;
 }
 
@@ -106,6 +109,7 @@ export function getDigest(str: string) {
 	if (!result) {
 		return undefined;
 	}
+
 	return result[0];
 }
 

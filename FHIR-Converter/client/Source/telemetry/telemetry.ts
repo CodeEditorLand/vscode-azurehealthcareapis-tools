@@ -13,6 +13,7 @@ export class Reporter extends vscode.Disposable {
 		super(() => reporter.dispose());
 
 		const packageInfo = getPackageInfo(ctx);
+
 		reporter =
 			packageInfo &&
 			new TelemetryReporter(
@@ -25,7 +26,9 @@ export class Reporter extends vscode.Disposable {
 
 interface IPackageInfo {
 	name: string;
+
 	version: string;
+
 	aiKey: string;
 }
 
@@ -39,5 +42,6 @@ function getPackageInfo(context: vscode.ExtensionContext): IPackageInfo {
 			aiKey: extensionPackage.aiKey,
 		};
 	}
+
 	return;
 }

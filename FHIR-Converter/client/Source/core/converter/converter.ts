@@ -12,15 +12,18 @@ import { IConverterEngine } from "./engine/converter-engine";
 
 export class Converter {
 	private _engine: IConverterEngine;
+
 	private _resultFolder: string;
 
 	constructor(engine: IConverterEngine, resultFolder: string) {
 		this._engine = engine;
+
 		this._resultFolder = resultFolder;
 	}
 
 	async convert(dataFile: string) {
 		const result = this._engine.process(dataFile);
+
 		await this.clearHistory(result.resultFile);
 
 		return result;
@@ -64,6 +67,7 @@ export class Converter {
 					}),
 				);
 			}
+
 			await Promise.all(promiseAll);
 		}
 	}

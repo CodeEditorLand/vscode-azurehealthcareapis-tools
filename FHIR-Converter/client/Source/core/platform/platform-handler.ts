@@ -16,7 +16,9 @@ import { WindowsPlatformData } from "./Windows-platform-data";
 
 export class PlatformHandler {
 	private static _instance = new PlatformHandler();
+
 	private platformData: IPlatformData;
+
 	private supportedOS: Array<string> = ["win32", "darwin"];
 
 	private constructor() {
@@ -39,6 +41,7 @@ export class PlatformHandler {
 		if (this.supportedOS.includes(os.platform())) {
 			return true;
 		}
+
 		return false;
 	}
 
@@ -50,6 +53,7 @@ export class PlatformHandler {
 				const tarCmd = `tar -zxvf ${engineConstants.DefaultEngineOrasPackageName}`;
 
 				const cmd = `${tarCmd}; ${renameCmd}`;
+
 				cp.execSync(cmd, {
 					cwd: engineConstants.DefaultEngineFolder,
 				});
@@ -63,6 +67,7 @@ export class PlatformHandler {
 		if (this.platformData.defaultWorkspaceFile) {
 			return path.join(folder, this.platformData.defaultWorkspaceFile);
 		}
+
 		return folder;
 	}
 }

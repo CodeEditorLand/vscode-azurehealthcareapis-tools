@@ -14,6 +14,7 @@ import { ITemplateManager } from "./template-manager";
 
 export class AcrTemplateManager implements ITemplateManager {
 	private _orasExecCmd: string;
+
 	private _engineExecCmd: string;
 
 	constructor(
@@ -22,6 +23,7 @@ export class AcrTemplateManager implements ITemplateManager {
 			.orasExecCmd,
 	) {
 		this._engineExecCmd = engineExecCmd;
+
 		this._orasExecCmd = orasExecCmd;
 	}
 
@@ -45,6 +47,7 @@ export class AcrTemplateManager implements ITemplateManager {
 			const paramList = [" logout", registryName];
 
 			const cmd = orasExecCmd + paramList.join(" ");
+
 			cp.execSync(cmd);
 
 			return "Logout succeeded.";
@@ -74,6 +77,7 @@ export class AcrTemplateManager implements ITemplateManager {
 			if (force) {
 				paramList.push("-f");
 			}
+
 			const cmd = this._engineExecCmd + paramList.join(" ");
 
 			const output = cp.execSync(cmd, {

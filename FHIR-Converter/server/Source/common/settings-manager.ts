@@ -14,6 +14,7 @@ import * as constants from "../common/constants";
 
 interface FhirConverterSettings {
 	templateFolder: string;
+
 	dataFolder: string;
 }
 
@@ -35,6 +36,7 @@ export class SettingsManager {
 		templateFolder: "",
 		dataFolder: "",
 	};
+
 	private globalSettings: FhirConverterSettings = this.defaultSettings;
 
 	private hasConfigurationCapability: boolean = false;
@@ -71,6 +73,7 @@ export class SettingsManager {
 		if (!this.hasConfigurationCapability) {
 			return Promise.resolve(this.globalSettings);
 		}
+
 		let result = this.documentSettings.get(resource);
 
 		if (!result) {
@@ -78,8 +81,10 @@ export class SettingsManager {
 				scopeUri: resource,
 				section: constants.ConfigurationSection,
 			});
+
 			this.documentSettings.set(resource, result);
 		}
+
 		return result;
 	}
 }

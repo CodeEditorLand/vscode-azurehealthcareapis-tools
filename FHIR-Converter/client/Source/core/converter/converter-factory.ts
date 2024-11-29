@@ -16,6 +16,7 @@ import { FhirConverterEngine } from "./engine/fhir-converter-engine";
 
 export class ConverterEngineFactory {
 	private static _instance = new ConverterEngineFactory();
+
 	private constructor() {}
 
 	static getInstance(): ConverterEngineFactory {

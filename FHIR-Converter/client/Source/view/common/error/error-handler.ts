@@ -34,6 +34,7 @@ export async function handle(error: Error): Promise<void> {
 			globals.settingManager.getWorkspaceConfiguration(
 				configurationConstants.TemplateFolderKey,
 			);
+
 		await interaction.askCreateMetadata(
 			localize(errorType, localize("message.noMetadata", templateFolder)),
 			localize("message.createMetadata"),

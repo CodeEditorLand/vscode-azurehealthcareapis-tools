@@ -62,7 +62,9 @@ export async function activate(context: vscode.ExtensionContext) {
 				globals.settingManager.context.storagePath,
 				configurationConstants.DefaultResultFolderName,
 			);
+
 			checkCreateFolders(resultFolder);
+
 			await globals.settingManager.updateWorkspaceConfiguration(
 				configurationConstants.ResultFolderKey,
 				resultFolder,
@@ -71,12 +73,14 @@ export async function activate(context: vscode.ExtensionContext) {
 
 		// update template folder to workspace folder for showing the template folder in the explorer
 		updateTemplateFolderToWorkspaceFolder();
+
 		vscode.workspace.onDidChangeConfiguration(async () => {
 			updateTemplateFolderToWorkspaceFolder();
 		});
 
 		// Start the client. This will also launch the server
 		client = createLanguageClient(context);
+
 		client.start();
 	}
 
@@ -158,6 +162,7 @@ export function deactivate(
 	if (!client) {
 		return undefined;
 	}
+
 	return client.stop();
 }
 

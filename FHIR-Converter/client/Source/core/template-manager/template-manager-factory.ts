@@ -7,6 +7,7 @@ import { AcrTemplateManager } from "./acr-template-manager";
 
 export class TemplateManagerFactory {
 	private static _instance = new TemplateManagerFactory();
+
 	private constructor() {}
 
 	static getInstance(): TemplateManagerFactory {
