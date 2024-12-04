@@ -1,7 +1,7 @@
 {
 	"dependencies": {
 		"@types/glob": "8.1.0",
-		"axios": "1.7.8",
+		"axios": "1.7.9",
 		"glob": "11.0.0"
 	},
 	"description": "Language client for FHIR Converter",
