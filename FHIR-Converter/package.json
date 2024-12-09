@@ -216,7 +216,7 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"@codeeditorland/test": "^1.2.0",
+		"@codeeditorland/test": "0.0.1",
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.6",
 		"@types/node": "^14.11.2",
