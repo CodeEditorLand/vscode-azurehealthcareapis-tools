@@ -1,24 +1,42 @@
 {
-	"activationEvents": [
-		"onCommand:microsoft.health.fhir.converter.convert",
-		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
-		"onCommand:microsoft.health.fhir.converter.selectTemplate",
-		"onCommand:microsoft.health.fhir.converter.selectData",
-		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
-		"onCommand:microsoft.health.fhir.converter.pullTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
-		"onCommand:microsoft.health.fhir.converter.pullSampleData",
-		"onCommand:microsoft.health.fhir.converter.pushTemplates",
-		"onCommand:microsoft.health.fhir.converter.loginRegistry",
-		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
-		"workspaceContains:**/*.liquid"
+	"name": "@codeeditorland/health-fhir-converter",
+	"displayName": "FHIR Converter",
+	"version": "1.4.3",
+	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
+	"categories": [
+		"Azure",
+		"Other"
 	],
-	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
-	"capabilities": {
-		"untrustedWorkspaces": {
-			"supported": true
-		},
-		"virtualWorkspaces": false
+	"keywords": [
+		"Azure",
+		"Azure API for FHIR",
+		"Azure FHIR Service",
+		"Converter",
+		"FHIR",
+		"FHIR Server for Azure",
+		"FHIR Service",
+		"Healthcare",
+		"HL7v2",
+		"C-CDA",
+		"Liquid"
+	],
+	"homepage": "https://github.com/microsoft/vscode-azurehealthcareapis-tools/blob/main/FHIR-Converter/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
+	},
+	"license": "MIT",
+	"publisher": "ms-azuretools",
+	"main": "./client/out/extension.js",
+	"scripts": {
+		"compile": "tsc -b",
+		"download-templates": "cd test-data && sh download-templates.sh",
+		"postinstall": "cd client && npm install && sh ./install-engine.sh && cd ../server && npm install && cd ..",
+		"lint": "tslint --fix client/src/**/*.ts  server/src/**/*.ts",
+		"package": "vsce package --githubBranch main --baseContentUrl https://github.com/microsoft/vscode-azurehealthcareapis-tools/tree/main/FHIR-Converter --baseImagesUrl https://raw.githubusercontent.com/microsoft/vscode-azurehealthcareapis-tools/main/FHIR-Converter",
+		"test": "npm run compile && node ./client/out/test/runTest.js && node ./server/out/test/runTest.js",
+		"vscode:prepublish": "npm run compile",
+		"watch": "tsc -b -w"
 	},
 	"contributes": {
 		"commands": [
@@ -182,29 +200,54 @@
 			]
 		}
 	},
-	"description": "Enables the conversion of legacy formatted health data to FHIR, expanding the use cases for health data and enabling interoperability.",
+	"activationEvents": [
+		"onCommand:microsoft.health.fhir.converter.convert",
+		"onCommand:microsoft.health.fhir.converter.updateTemplateFolder",
+		"onCommand:microsoft.health.fhir.converter.selectTemplate",
+		"onCommand:microsoft.health.fhir.converter.selectData",
+		"onCommand:microsoft.health.fhir.converter.createConverterWorkspace",
+		"onCommand:microsoft.health.fhir.converter.pullTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullOfficialTemplates",
+		"onCommand:microsoft.health.fhir.converter.pullSampleData",
+		"onCommand:microsoft.health.fhir.converter.pushTemplates",
+		"onCommand:microsoft.health.fhir.converter.loginRegistry",
+		"onCommand:microsoft.health.fhir.converter.logoutRegistry",
+		"workspaceContains:**/*.liquid"
+	],
+	"dependencies": {},
 	"devDependencies": {
-		"@types/glob": "8.1.0",
-		"@types/node": "22.10.1",
-		"chai": "5.1.2",
-		"chai-as-promised": "8.0.1",
-		"chai-subset": "1.6.0",
-		"glob": "11.0.0",
-		"nyc": "17.1.0",
-		"reflect-metadata": "0.2.2"
+		"@codeeditorland/test": "^1.2.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^14.11.2",
+		"@types/vscode": "^1.44.0",
+		"chai": "^4.2.0",
+		"chai-as-promised": "^7.1.1",
+		"chai-subset": "^1.6.0",
+		"glob": "^7.1.4",
+		"mocha": "^10.1.0",
+		"mocha-multi-reporters": "^1.5.1",
+		"nyc": "^15.1.0",
+		"reflect-metadata": "^0.1.13",
+		"tslint": "^5.19.0",
+		"typescript": "^3.8.3",
+		"vsce": "^1.96.1"
 	},
-	"displayName": "FHIR Converter",
-	"enableProposedApi": true,
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"icon": "assets/icon.png",
 	"galleryBanner": {
 		"color": "#3c3c3c",
 		"theme": "dark"
 	},
-	"icon": "assets/icon.png",
-	"main": "./client/out/extension.js",
-	"name": "vscode-health-fhir-converter",
 	"preview": true,
-	"scripts": {
-		"compile": "tsc -b",
-		"download-templates": "cd test-data && sh download-templates.sh"
-	}
+	"aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+	"capabilities": {
+		"untrustedWorkspaces": {
+			"supported": true
+		},
+		"virtualWorkspaces": false
+	},
+	"enableProposedApi": true
 }
