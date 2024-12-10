@@ -1,13 +1,6 @@
 {
 	"name": "@codeeditorland/health-fhir-converter-client",
-	"version": "1.2.0",
 	"description": "Language client for FHIR Converter",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/microsoft/vscode-azurehealthcareapis-tools"
-	},
-	"license": "MIT",
-	"publisher": "ms-azuretools",
 	"dependencies": {
 		"@codeeditorland/extension-telemetry": "0.0.1",
 		"@codeeditorland/languageclient": "0.0.1",
@@ -16,8 +9,5 @@
 		"glob": "^7.1.4"
 	},
 	"devDependencies": {},
-	"engines": {
-		"vscode": "^1.44.0"
-	},
 	"preview": true
 }
