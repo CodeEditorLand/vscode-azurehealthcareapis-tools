@@ -4,9 +4,9 @@
 	"dependencies": {
 		"@codeeditorland/extension-telemetry": "0.0.1",
 		"@codeeditorland/languageclient": "0.0.1",
-		"@types/glob": "7.1.1",
-		"axios": "0.21.2",
-		"glob": "7.1.4"
+		"@types/glob": "8.1.0",
+		"axios": "1.7.9",
+		"glob": "11.0.0"
 	},
 	"devDependencies": {},
 	"preview": true

@@ -4,8 +4,8 @@
 	"dependencies": {
 		"@codeeditorland/languageserver": "0.0.1",
 		"@codeeditorland/languageserver-textdocument": "0.0.1",
-		"@types/glob": "7.1.1",
-		"glob": "7.1.4"
+		"@types/glob": "8.1.0",
+		"glob": "11.0.0"
 	},
 	"devDependencies": {}
 }
