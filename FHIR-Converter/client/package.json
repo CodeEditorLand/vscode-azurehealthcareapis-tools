@@ -6,7 +6,7 @@
 		"@codeeditorland/languageclient": "0.0.1",
 		"@types/glob": "8.1.0",
 		"axios": "1.7.9",
-		"glob": "11.0.0"
+		"glob": "11.0.1"
 	},
 	"devDependencies": {},
 	"preview": true
